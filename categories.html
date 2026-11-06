@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nazeer Electronics — Screen 4: Hardware Categories</title>
+<meta name="description" content="Explore Nazeer Electronics by hardware category: authentic laptops, titanium smartphones, noise-canceling headphones, and smartwatches."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='12' fill='%232C365A'/><path d='M27 7 L14 28 h8 l-3 13 14-22 h-8 z' fill='%23C4BCB0'/></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- Global 3D Canvas -->
+<canvas id="bg3d" aria-hidden="true"></canvas>
+
+<!-- ============ NAVBAR (6 SCREENS) ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner glass">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="ic"><path d="M13.5 2 5 13.5h5.5L10 22l8.5-11.5H13Z"/></svg>
+      </span>
+      <span class="brand-name">Nazeer <em>Electronics</em></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="index.html" class="nav-link">Welcome</a>
+      <a href="auth.html" class="nav-link">Account</a>
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <a href="categories.html" class="nav-link active">Categories</a>
+      <a href="store.html" class="nav-link">Store</a>
+      <a href="offers-contact.html" class="nav-link">Offers &amp; Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="wishBtn" aria-label="Wishlist">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20.3C7.2 16.7 3.8 13.6 3.8 10a4.6 4.6 0 0 1 8.2-2.9A4.6 4.6 0 0 1 20.2 10c0 3.6-3.4 6.7-8.2 10.3Z"/></svg>
+        <span class="bubble" id="wishBadge">0</span>
+      </button>
+      <button class="icon-btn" id="cartBtn" aria-label="Shopping cart">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.3 7.5h11.4l-1 11.6a2 2 0 0 1-2 1.9H9.3a2 2 0 0 1-2-1.9Z"/><path d="M9 10V6.8a3 3 0 0 1 6 0V10"/></svg>
+        <span class="bubble" id="cartBadge">0</span>
+      </button>
+      <button class="icon-btn" id="profileBtn" aria-label="Profile">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8.2" r="3.7"/><path d="M4.8 20.2c1.3-3.3 4-4.9 7.2-4.9s5.9 1.6 7.2 4.9"/></svg>
+        <span class="avatar-initial" id="userInitial" hidden></span>
+      </button>
+      <button class="icon-btn burger" id="burger" aria-label="Menu">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ============ SCREEN 4 · CATEGORIES ============ -->
+<section class="screen cats" id="categories" style="min-height: calc(100vh - 80px); padding-top: 60px; padding-bottom: 80px;">
+  <div class="orb orb-3" data-parallax="70"></div>
+  <div class="wrap">
+    <div class="section-head center" data-reveal>
+      <p class="eyebrow">Screen 4 · Browse Hardware</p>
+      <h2>Shop by Category</h2>
+      <p class="sub">Six worlds of authentic hardware — tap any category to open and filter the store catalog.</p>
+    </div>
+
+    <div class="cat-grid stagger" style="margin-top: 40px;">
+      <!-- Category 1: Laptops -->
+      <a href="store.html?category=laptops" class="cat-card tilt" style="--c:#1f7ae0; text-decoration:none;">
+        <span class="cat-go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+        <div class="cat-img-wrap"><img src="assets/images/cat_laptops.jpg" alt="Laptops" class="cat-real-img" /></div>
+        <h3>Laptops &amp; Ultrabooks</h3>
+        <p>42 products • Apple, ASUS &amp; Dell</p>
+      </a>
+
+      <!-- Category 2: Smartphones -->
+      <a href="store.html?category=phones" class="cat-card tilt" style="--c:#12b5a2; text-decoration:none;">
+        <span class="cat-go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+        <div class="cat-img-wrap"><img src="assets/images/cat_phones.jpg" alt="Smartphones" class="cat-real-img" /></div>
+        <h3>Smartphones &amp; Foldables</h3>
+        <p>36 products • iPhone &amp; Galaxy Ultra</p>
+      </a>
+
+      <!-- Category 3: Headphones -->
+      <a href="store.html?category=audio" class="cat-card tilt" style="--c:#ff7a59; text-decoration:none;">
+        <span class="cat-go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+        <div class="cat-img-wrap"><img src="assets/images/cat_headphones.jpg" alt="Headphones" class="cat-real-img" /></div>
+        <h3>Headphones &amp; Audio</h3>
+        <p>28 products • Sony, Bose &amp; Marshall</p>
+      </a>
+
+      <!-- Category 4: Wearables -->
+      <a href="store.html?category=wearables" class="cat-card tilt" style="--c:#f0a52c; text-decoration:none;">
+        <span class="cat-go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+        <div class="cat-img-wrap"><img src="assets/images/cat_watches.jpg" alt="Smart Watches" class="cat-real-img" /></div>
+        <h3>Smart Watches</h3>
+        <p>19 products • Apple Ultra &amp; Garmin</p>
+      </a>
+
+      <!-- Category 5: Gaming -->
+      <a href="store.html?category=gaming" class="cat-card tilt" style="--c:#ef5da8; text-decoration:none;">
+        <span class="cat-go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+        <div class="cat-img-wrap"><img src="assets/images/cat_gaming.jpg" alt="Gaming" class="cat-real-img" /></div>
+        <h3>Gaming &amp; Consoles</h3>
+        <p>24 products • ROG Zephyrus &amp; OLED</p>
+      </a>
+
+      <!-- Category 6: Speakers -->
+      <a href="store.html?category=speakers" class="cat-card tilt" style="--c:#38b6ff; text-decoration:none;">
+        <span class="cat-go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+        <div class="cat-img-wrap"><img src="assets/images/cat_speakers.jpg" alt="Speakers" class="cat-real-img" /></div>
+        <h3>Speakers &amp; Acoustics</h3>
+        <p>17 products • Marshall &amp; Studio Hi-Fi</p>
+      </a>
+    </div>
+
+    <!-- Screen Navigation Quick Selector -->
+    <div style="margin-top: 60px; text-align:center;">
+      <p style="color:var(--deep-ocean); font-weight:700; margin-bottom:14px;">Switch to other screens:</p>
+      <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
+        <a href="index.html" class="btn btn-ghost btn-sm">Screen 1: Welcome</a>
+        <a href="auth.html" class="btn btn-ghost btn-sm">Screen 2: Account</a>
+        <a href="dashboard.html" class="btn btn-ghost btn-sm">Screen 3: Dashboard</a>
+        <a href="store.html" class="btn btn-ghost btn-sm">Screen 5: Store</a>
+        <a href="offers-contact.html" class="btn btn-ghost btn-sm">Screen 6: Offers & Contact</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="f-col f-brand">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="ic"><path d="M13.5 2 5 13.5h5.5L10 22l8.5-11.5H13Z"/></svg>
+        </span>
+        <span class="brand-name">Nazeer <em>Electronics</em></span>
+      </a>
+      <p>Powering your digital lifestyle with genuine brand warranty, honest Rupee pricing, and instant assistance.</p>
+    </div>
+    <div class="f-col">
+      <h4>6 Screens</h4>
+      <ul>
+        <li><a href="index.html">Screen 1: Welcome</a></li>
+        <li><a href="auth.html">Screen 2: Account Access</a></li>
+        <li><a href="dashboard.html">Screen 3: Dashboard</a></li>
+        <li><a href="categories.html">Screen 4: Categories</a></li>
+        <li><a href="store.html">Screen 5: Store</a></li>
+        <li><a href="offers-contact.html">Screen 6: Offers &amp; Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bar">© 2026 Nazeer Electronics — All 6 Screens Synchronized.</div>
+</footer>
+
+<!-- Drawers -->
+<div class="backdrop" id="backdrop"></div>
+<aside class="drawer" id="cartDrawer" aria-label="Shopping cart">
+  <header class="drawer-head">
+    <h3><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.3 7.5h11.4l-1 11.6a2 2 0 0 1-2 1.9H9.3a2 2 0 0 1-2-1.9Z"/><path d="M9 10V6.8a3 3 0 0 1 6 0V10"/></svg>
+      Your Cart <span class="head-count" id="cartCountTxt"></span></h3>
+    <button class="icon-btn" data-close-drawer aria-label="Close cart"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+  </header>
+  <div class="drawer-body" id="cartItems"></div>
+  <footer class="drawer-foot">
+    <div class="sum-row"><span>Subtotal</span><span id="cartSub">₹0</span></div>
+    <div class="sum-row"><span>Delivery</span><span id="cartDel">Free</span></div>
+    <div class="sum-row total"><span>Total</span><span id="cartTotal">₹0</span></div>
+    <button class="btn btn-primary btn-block" id="checkoutBtn" type="button">Checkout</button>
+  </footer>
+</aside>
+
+<aside class="drawer" id="wishDrawer" aria-label="Wishlist">
+  <header class="drawer-head">
+    <h3><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.3C7.2 16.7 3.8 13.6 3.8 10a4.6 4.6 0 0 1 8.2-2.9A4.6 4.6 0 0 1 20.2 10c0 3.6-3.4 6.7-8.2 10.3Z"/></svg> Wishlist</h3>
+    <button class="icon-btn" data-close-drawer aria-label="Close wishlist"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+  </header>
+  <div class="drawer-body" id="wishItems"></div>
+  <footer class="drawer-foot">
+    <button class="btn btn-ghost btn-block" id="addAllWish" type="button">Add all to Cart</button>
+  </footer>
+</aside>
+
+<div class="popover" id="profilePop">
+  <p class="pop-name" id="popName"></p>
+  <p class="pop-mail" id="popMail"></p>
+  <button class="btn btn-ghost btn-sm btn-block" id="signOutBtn" type="button">Sign Out</button>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

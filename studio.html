@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3D Product Visualizer Studio | Nazeer Electronics</title>
+  <meta name="description" content="Explore custom finishes in our 3D electronics studio. 360-degree OrbitControls, exploded view, and real-time palette material customization."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<canvas id="bg3d" aria-hidden="true"></canvas>
+
+<!-- ============ NAVBAR ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner glass">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="ic"><path d="M13.5 2 5 13.5h5.5L10 22l8.5-11.5H13Z"/></svg>
+      </span>
+      <span class="brand-name">Nazeer <em>Electronics</em></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="index.html#home" class="nav-link">Home</a>
+      <a href="index.html#categories" class="nav-link">Categories</a>
+      <a href="shop.html" class="nav-link">Store Catalog</a>
+      <a href="index.html#offers" class="nav-link">Special Deals</a>
+      <a href="studio.html" class="nav-link active">3D Studio</a>
+      <a href="orders.html" class="nav-link">Track Orders</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+      <a href="account.html" class="nav-link">Account</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="wishBtn" aria-label="Wishlist">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20.3C7.2 16.7 3.8 13.6 3.8 10a4.6 4.6 0 0 1 8.2-2.9A4.6 4.6 0 0 1 20.2 10c0 3.6-3.4 6.7-8.2 10.3Z"/></svg>
+        <span class="bubble" id="wishBadge">0</span>
+      </button>
+      <button class="icon-btn" id="cartBtn" aria-label="Shopping cart">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.3 7.5h11.4l-1 11.6a2 2 0 0 1-2 1.9H9.3a2 2 0 0 1-2-1.9Z"/><path d="M9 10V6.8a3 3 0 0 1 6 0V10"/></svg>
+        <span class="bubble" id="cartBadge">0</span>
+      </button>
+      <a class="icon-btn" id="profileBtn" href="account.html" aria-label="Profile">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8.2" r="3.7"/><path d="M4.8 20.2c1.3-3.3 4-4.9 7.2-4.9s5.9 1.6 7.2 4.9"/></svg>
+        <span class="avatar-initial" id="userInitial" hidden></span>
+      </a>
+      <button class="icon-btn burger" id="burger" aria-label="Menu">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <header class="page-header">
+    <div class="wrap">
+      <span class="eyebrow">Interactive WebGL Lab</span>
+      <h1>3D Product Visualizer Studio</h1>
+      <p>Rotate devices in full 360° space, inspect internal components in exploded view, and customize finishes with our exclusive luxury palette.</p>
+    </div>
+  </header>
+
+  <section class="wrap" style="padding: 0 24px 80px;">
+    <div class="studio-container">
+      <!-- Left 3D Viewport Stage -->
+      <div class="studio-stage glass">
+        <div class="studio-overlay-top">
+          <div class="device-selector">
+            <button class="device-tab active" data-art="headphones">Marshall Major IV</button>
+            <button class="device-tab" data-art="phone">Apple iPhone 16 Pro</button>
+            <button class="device-tab" data-art="watch">Apple Watch Ultra 2</button>
+            <button class="device-tab" data-art="speaker">Marshall Stanmore III</button>
+          </div>
+          <span class="badge" style="background:var(--cinereous); color:#fff;">Interactive Digital Twin</span>
+        </div>
+
+        <canvas id="studioCanvas"></canvas>
+
+        <div class="studio-overlay-bottom">
+          <div class="modal3d-hint" style="position:static;">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 12H2m0 0 3-3m-3 3 3 3M17 12h5m0 0-3-3m3 3-3 3"/></svg>
+            Drag to Rotate · Scroll to Zoom
+          </div>
+
+          <div style="display:flex; gap:6px; background:rgba(31,35,45,0.85); padding:6px 12px; border-radius:999px; border:1px solid var(--stroke);">
+            <button class="m3d-chip active" data-studio-preset="studio">Studio</button>
+            <button class="m3d-chip" data-studio-preset="neon">Cyber Neon</button>
+            <button class="m3d-chip" data-studio-preset="dusk">Cyber Dusk</button>
+            <button class="m3d-chip" id="studioExplodeBtn">Explode 3D</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Customizer Sidebar -->
+      <div class="checkout-card glass">
+        <span class="pill" style="margin-bottom:12px; display:inline-block;">Studio Customizer</span>
+        <h2 id="studioTitle" style="font-size:1.8rem; margin-bottom:8px; color:var(--concerto);">Marshall Major IV</h2>
+        <p style="color:var(--cloudy-sky); font-size:0.92rem; line-height:1.6; margin-bottom:24px;">
+          Legendary sound signature featuring custom 40mm drivers, multi-directional brass control knob, and 80+ hours of continuous wireless playback.
+        </p>
+
+        <!-- Palette Color Finishes from User Reference Image -->
+        <div style="margin-bottom:26px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <label style="font-size:0.8rem; font-weight:800; text-transform:uppercase; color:var(--cloudy-sky); letter-spacing:0.06em;">Casing Finish Palette:</label>
+            <strong id="studioFinishName" style="color:var(--cinereous); font-size:0.86rem;">Cinereous</strong>
+          </div>
+
+          <div class="palette-swatches-bar">
+            <!-- 1. Concerto -->
+            <div class="palette-swatch-box" data-hex="d7d7d6" data-name="Concerto (#D7D7D6)">
+              <span class="palette-circle" style="background:#D7D7D6;"></span>
+              <span class="palette-name">Concerto</span>
+            </div>
+            <!-- 2. Cloudy Sky -->
+            <div class="palette-swatch-box" data-hex="b7b8bb" data-name="Cloudy Sky (#B7B8BB)">
+              <span class="palette-circle" style="background:#B7B8BB;"></span>
+              <span class="palette-name">Cloudy Sky</span>
+            </div>
+            <!-- 3. Cinereous (Default active) -->
+            <div class="palette-swatch-box active" data-hex="a08a81" data-name="Cinereous (#A08A81)">
+              <span class="palette-circle" style="background:#A08A81;"></span>
+              <span class="palette-name">Cinereous</span>
+            </div>
+            <!-- 4. Alaska Gray -->
+            <div class="palette-swatch-box" data-hex="595d66" data-name="Alaska Gray (#595D66)">
+              <span class="palette-circle" style="background:#595D66;"></span>
+              <span class="palette-name">Alaska Gray</span>
+            </div>
+            <!-- 5. Blue Anthracite -->
+            <div class="palette-swatch-box" data-hex="272b36" data-name="Blue Anthracite (#272B36)">
+              <span class="palette-circle" style="background:#272B36;"></span>
+              <span class="palette-name">Anthracite</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Specifications -->
+        <div style="margin-bottom:28px;">
+          <label style="font-size:0.8rem; font-weight:800; text-transform:uppercase; color:var(--cloudy-sky); letter-spacing:0.06em; display:block; margin-bottom:12px;">Architecture Highlights:</label>
+          <ul class="m3d-specs" style="display:grid; grid-template-columns:1fr 1fr; gap:10px; list-style:none;">
+            <li style="background:rgba(31,35,45,0.6); padding:10px 14px; border-radius:12px; border:1px solid var(--stroke);">
+              <strong style="color:var(--concerto); font-size:0.84rem; display:block;">Drivers</strong>
+              <span style="color:var(--cloudy-sky); font-size:0.78rem;">40mm Custom Dynamic</span>
+            </li>
+            <li style="background:rgba(31,35,45,0.6); padding:10px 14px; border-radius:12px; border:1px solid var(--stroke);">
+              <strong style="color:var(--concerto); font-size:0.84rem; display:block;">Battery Life</strong>
+              <span style="color:var(--cloudy-sky); font-size:0.78rem;">80+ Hours Wireless</span>
+            </li>
+            <li style="background:rgba(31,35,45,0.6); padding:10px 14px; border-radius:12px; border:1px solid var(--stroke);">
+              <strong style="color:var(--concerto); font-size:0.84rem; display:block;">Fast Charge</strong>
+              <span style="color:var(--cloudy-sky); font-size:0.78rem;">15 mins = 15 Hours</span>
+            </li>
+            <li style="background:rgba(31,35,45,0.6); padding:10px 14px; border-radius:12px; border:1px solid var(--stroke);">
+              <strong style="color:var(--concerto); font-size:0.84rem; display:block;">Chassis</strong>
+              <span style="color:var(--cloudy-sky); font-size:0.78rem;">Custom Vinyl & Brass</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Add To Cart Button -->
+        <div style="padding-top:20px; border-top:1px solid var(--stroke); display:flex; gap:14px; align-items:center;">
+          <button class="btn btn-primary btn-block btn-glow" id="studioAddToCartBtn">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.3 7.5h11.4l-1 11.6a2 2 0 0 1-2 1.9H9.3a2 2 0 0 1-2-1.9Z"/><path d="M9 10V6.8a3 3 0 0 1 6 0V10"/></svg>
+            Add to Cart with Selected Finish
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ DRAWERS ============ -->
+<div class="drawer-backdrop" id="backdrop"></div>
+<aside class="drawer" id="cartDrawer" aria-label="Shopping Cart">
+  <header class="drawer-head">
+    <h3>Your Cart <span id="cartCountTxt"></span></h3>
+    <button class="icon-btn" data-close-drawer aria-label="Close cart">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+  </header>
+  <div class="drawer-body" id="cartItems"></div>
+  <footer class="drawer-foot">
+    <div class="cart-tot"><span>Subtotal:</span><strong id="cartSubtotal">₹0</strong></div>
+    <a href="checkout.html" class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Delivery Checkout</a>
+  </footer>
+</aside>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<button class="stb" id="stb" aria-label="Scroll to top">
+  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>
+</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

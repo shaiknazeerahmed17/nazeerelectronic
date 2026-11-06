@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Delivery & Checkout | Nazeer Electronics</title>
+  <meta name="description" content="Secure delivery checkout for your electronics. Free sky delivery, live tracking, and flexible payment methods."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<canvas id="bg3d" aria-hidden="true"></canvas>
+
+<!-- ============ NAVBAR ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner glass">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="ic"><path d="M13.5 2 5 13.5h5.5L10 22l8.5-11.5H13Z"/></svg>
+      </span>
+      <span class="brand-name">Nazeer <em>Electronics</em></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="index.html#home" class="nav-link">Home</a>
+      <a href="index.html#categories" class="nav-link">Categories</a>
+      <a href="shop.html" class="nav-link">Store Catalog</a>
+      <a href="index.html#offers" class="nav-link">Special Deals</a>
+      <a href="studio.html" class="nav-link">3D Studio</a>
+      <a href="orders.html" class="nav-link">Track Orders</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+      <a href="account.html" class="nav-link">Account</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="wishBtn" aria-label="Wishlist">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20.3C7.2 16.7 3.8 13.6 3.8 10a4.6 4.6 0 0 1 8.2-2.9A4.6 4.6 0 0 1 20.2 10c0 3.6-3.4 6.7-8.2 10.3Z"/></svg>
+        <span class="bubble" id="wishBadge">0</span>
+      </button>
+      <button class="icon-btn" id="cartBtn" aria-label="Shopping cart">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.3 7.5h11.4l-1 11.6a2 2 0 0 1-2 1.9H9.3a2 2 0 0 1-2-1.9Z"/><path d="M9 10V6.8a3 3 0 0 1 6 0V10"/></svg>
+        <span class="bubble" id="cartBadge">0</span>
+      </button>
+      <a class="icon-btn" id="profileBtn" href="account.html" aria-label="Profile">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8.2" r="3.7"/><path d="M4.8 20.2c1.3-3.3 4-4.9 7.2-4.9s5.9 1.6 7.2 4.9"/></svg>
+        <span class="avatar-initial" id="userInitial" hidden></span>
+      </a>
+      <button class="icon-btn burger" id="burger" aria-label="Menu">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <header class="page-header">
+    <div class="wrap">
+      <span class="eyebrow">Direct Doorstep Delivery</span>
+      <h1>Delivery Details & Checkout</h1>
+      <p>Please enter your shipping address and select your delivery speed. Real-time GPS and carrier status will be automatically available in My Orders.</p>
+    </div>
+  </header>
+
+  <section class="wrap" style="padding: 0 24px 80px;">
+    <form id="checkoutForm">
+      <div class="checkout-grid">
+        <!-- Left: Delivery Address & Shipping -->
+        <div class="checkout-card glass">
+          <h3>
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            1. Delivery Address
+          </h3>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="coName">Full Name</label>
+              <input type="text" id="coName" class="form-input" required placeholder="e.g. Alex Chen"/>
+            </div>
+            <div class="form-group">
+              <label for="coPhone">Phone (for Courier OTP)</label>
+              <input type="tel" id="coPhone" class="form-input" required placeholder="+1 (555) 234-5678"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="coEmail">Email Address (for Digital Tracking & Invoice)</label>
+            <input type="email" id="coEmail" class="form-input" required placeholder="alex.chen@example.com"/>
+          </div>
+
+          <div class="form-group">
+            <label for="coStreet">Street Address & Apartment / Suite</label>
+            <input type="text" id="coStreet" class="form-input" required placeholder="742 Evergreen Terrace, Apt 4B"/>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="coCity">City</label>
+              <input type="text" id="coCity" class="form-input" required placeholder="Springfield"/>
+            </div>
+            <div class="form-group">
+              <label for="coState">State / Province</label>
+              <input type="text" id="coState" class="form-input" required placeholder="Telangana (TS)"/>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="coPin">PIN / Postal ZIP Code</label>
+              <input type="text" id="coPin" class="form-input" required placeholder="500033"/>
+            </div>
+            <div class="form-group">
+              <label for="coCountry">Country</label>
+              <input type="text" id="coCountry" class="form-input" value="India" readonly style="opacity:0.85;"/>
+            </div>
+          </div>
+
+          <h3 style="margin-top:34px;">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18.5" r="2.5"/><circle cx="7" cy="18.5" r="2.5"/></svg>
+            2. Shipping Speed
+          </h3>
+
+          <div class="shipping-tiers">
+            <div class="tier-option selected" data-fee="0">
+              <div class="tier-info">
+                <strong>Standard Sky Delivery</strong>
+                <span>Estimated arrival in 2-3 business days · 100% Free</span>
+              </div>
+              <span class="tier-price" style="color:var(--cinereous);">FREE</span>
+            </div>
+
+            <div class="tier-option" data-fee="15">
+              <div class="tier-info">
+                <strong>Express 24h Priority Air</strong>
+                <span>Guaranteed next-day delivery by 2:00 PM</span>
+              </div>
+              <span class="tier-price">₹999</span>
+            </div>
+
+            <div class="tier-option" data-fee="25">
+              <div class="tier-info">
+                <strong>White-Glove VIP Courier</strong>
+                <span>Scheduled evening hand-delivery + device inspection</span>
+              </div>
+              <span class="tier-price">₹1,999</span>
+            </div>
+          </div>
+
+          <h3 style="margin-top:34px;">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+            3. Payment Method
+          </h3>
+
+          <div class="payment-grid">
+            <div class="pay-pill selected" data-method="Credit Card">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+              Credit / Debit Card
+            </div>
+            <div class="pay-pill" data-method="Apple Pay">
+              <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.63-.76 1.06-1.82.94-2.88-.91.04-2.02.6-2.67 1.36-.58.67-1.09 1.75-.95 2.79 1.02.08 2.05-.51 2.68-1.27Z"/></svg>
+              Apple Pay
+            </div>
+            <div class="pay-pill" data-method="Instant UPI">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
+              UPI / Instant QR
+            </div>
+            <div class="pay-pill" data-method="Cash on Delivery">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>
+              Cash on Delivery
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Order Summary -->
+        <div class="checkout-card glass" style="height:fit-content;">
+          <h3>Order Summary</h3>
+          <div class="summary-items" id="checkoutItems">
+            <!-- Rendered by script.js -->
+          </div>
+
+          <div class="summary-lines">
+            <div class="summary-line">
+              <span>Subtotal:</span>
+              <strong id="checkoutSubtotal">₹0</strong>
+            </div>
+            <div class="summary-line">
+              <span>Shipping Fee:</span>
+              <strong id="checkoutShipping">FREE</strong>
+            </div>
+            <div class="summary-line">
+              <span>Estimated Tax (6%):</span>
+              <strong id="checkoutTax">₹0</strong>
+            </div>
+            <div class="summary-line total">
+              <span>Total Amount:</span>
+              <strong id="checkoutTotal" style="color:var(--charcoal);">₹0</strong>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-glow" style="margin-top:20px; padding:16px;">
+            Place Order & Track Delivery
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </button>
+
+          <p style="font-size:0.78rem; color:var(--cloudy-sky); text-align:center; margin-top:14px; line-height:1.5;">
+            🔒 Encrypted 256-bit SSL transaction. 30-day money-back guarantee with free return pickup.
+          </p>
+        </div>
+      </div>
+    </form>
+  </section>
+</main>
+
+<!-- ============ DRAWERS ============ -->
+<div class="drawer-backdrop" id="backdrop"></div>
+<aside class="drawer" id="cartDrawer" aria-label="Shopping Cart">
+  <header class="drawer-head">
+    <h3>Your Cart <span id="cartCountTxt"></span></h3>
+    <button class="icon-btn" data-close-drawer aria-label="Close cart">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+  </header>
+  <div class="drawer-body" id="cartItems"></div>
+  <footer class="drawer-foot">
+    <div class="cart-tot"><span>Subtotal:</span><strong id="cartSubtotal">₹0</strong></div>
+    <a href="checkout.html" class="btn btn-primary btn-block">Proceed to Delivery Checkout</a>
+  </footer>
+</aside>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<button class="stb" id="stb" aria-label="Scroll to top">
+  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>
+</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="script.js"></script>
+
+<!-- ============ CELEBRATION RIBBON POP MODAL ============ -->
+<div class="ribbon-modal-backdrop" id="ribbonModal" aria-hidden="true" role="dialog" aria-labelledby="celebrationTitle">
+  <canvas id="ribbonCanvas"></canvas>
+  <div class="celebration-card">
+    <div class="celebration-ribbon-badge"><span>🎉</span></div>
+    <h2 id="celebrationTitle">Congratulations!</h2>
+    <p class="celebration-sub">Your order has been placed successfully and confirmed.</p>
+    <div class="order-id-highlight">
+      <span>Order ID: <strong id="popOrderId">#NZR-2026-894210</strong></span>
+      <button class="btn-copy-order-id" id="btnCopyOrderId" onclick="copyCelebrationId()" title="Copy Order ID">Copy</button>
+    </div>
+    <div class="order-destination-box">
+      <div class="dest-row">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div>
+          <span class="dest-label">Delivery Destination (Where Placed):</span>
+          <p class="dest-val" id="popOrderAddress">742 Evergreen Terrace, Jubilee Hills Road No. 36, Hyderabad, Telangana - 500033</p>
+        </div>
+      </div>
+      <div class="dest-row">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 16v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v1"/><path d="M18 8h4a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-4"/><circle cx="7" cy="18.5" r="2.5"/><circle cx="17" cy="18.5" r="2.5"/></svg>
+        <div>
+          <span class="dest-label">Logistics Fulfillment Hub:</span>
+          <p class="dest-val" id="popOrderHub">Dispatched &amp; Routed to Nazeer Express Logistics Hub • Air Express Delivery in 2 Business Days</p>
+        </div>
+      </div>
+      <div class="dest-row">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        <div>
+          <span class="dest-label">Total Amount Paid:</span>
+          <p class="dest-val" style="color:var(--charcoal); font-size:1.15rem;" id="popOrderTotal">₹0</p>
+        </div>
+      </div>
+    </div>
+    <div class="celebration-actions">
+      <a href="orders.html" class="btn-track-order" id="popTrackOrderBtn">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+        Track Live in My Orders
+      </a>
+      <button class="btn-continue-shopping" onclick="closeCelebrationModal()">Continue Shopping</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

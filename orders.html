@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Orders & Live Delivery Tracker | Nazeer Electronics</title>
+  <meta name="description" content="Track your electronic orders with our live 5-stage delivery tracker. Real-time updates, courier details, and instant digital invoices."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<canvas id="bg3d" aria-hidden="true"></canvas>
+
+<!-- ============ NAVBAR ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner glass">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="ic"><path d="M13.5 2 5 13.5h5.5L10 22l8.5-11.5H13Z"/></svg>
+      </span>
+      <span class="brand-name">Nazeer <em>Electronics</em></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="index.html#home" class="nav-link">Home</a>
+      <a href="index.html#categories" class="nav-link">Categories</a>
+      <a href="shop.html" class="nav-link">Store Catalog</a>
+      <a href="index.html#offers" class="nav-link">Special Deals</a>
+      <a href="studio.html" class="nav-link">3D Studio</a>
+      <a href="orders.html" class="nav-link active">Track Orders</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+      <a href="account.html" class="nav-link">Account</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="wishBtn" aria-label="Wishlist">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20.3C7.2 16.7 3.8 13.6 3.8 10a4.6 4.6 0 0 1 8.2-2.9A4.6 4.6 0 0 1 20.2 10c0 3.6-3.4 6.7-8.2 10.3Z"/></svg>
+        <span class="bubble" id="wishBadge">0</span>
+      </button>
+      <button class="icon-btn" id="cartBtn" aria-label="Shopping cart">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.3 7.5h11.4l-1 11.6a2 2 0 0 1-2 1.9H9.3a2 2 0 0 1-2-1.9Z"/><path d="M9 10V6.8a3 3 0 0 1 6 0V10"/></svg>
+        <span class="bubble" id="cartBadge">0</span>
+      </button>
+      <a class="icon-btn" id="profileBtn" href="account.html" aria-label="Profile">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8.2" r="3.7"/><path d="M4.8 20.2c1.3-3.3 4-4.9 7.2-4.9s5.9 1.6 7.2 4.9"/></svg>
+        <span class="avatar-initial" id="userInitial" hidden></span>
+      </a>
+      <button class="icon-btn burger" id="burger" aria-label="Menu">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <header class="page-header">
+    <div class="wrap">
+      <span class="eyebrow">Real-Time Logistics</span>
+      <h1>My Orders & Delivery Tracker</h1>
+      <p>Monitor your active electronic shipments with our live 5-stage delivery progress tracker. View driver ETA, package manifests, and download tax invoices.</p>
+    </div>
+  </header>
+
+  <section class="wrap" style="padding: 0 24px 80px;">
+    <!-- Active and past orders rendered dynamically by script.js -->
+    <div class="orders-list" id="ordersList">
+      <!-- Injected by script.js -->
+    </div>
+  </section>
+</main>
+
+<!-- ============ DRAWERS ============ -->
+<div class="drawer-backdrop" id="backdrop"></div>
+<aside class="drawer" id="cartDrawer" aria-label="Shopping Cart">
+  <header class="drawer-head">
+    <h3>Your Cart <span id="cartCountTxt"></span></h3>
+    <button class="icon-btn" data-close-drawer aria-label="Close cart">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+  </header>
+  <div class="drawer-body" id="cartItems"></div>
+  <footer class="drawer-foot">
+    <div class="cart-tot"><span>Subtotal:</span><strong id="cartSubtotal">₹0</strong></div>
+    <a href="checkout.html" class="btn btn-primary btn-block">Proceed to Delivery Checkout</a>
+  </footer>
+</aside>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<button class="stb" id="stb" aria-label="Scroll to top">
+  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>
+</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

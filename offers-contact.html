@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nazeer Electronics — Screen 6: Special Offers & Contact Concierge</title>
+<meta name="description" content="Exclusive limited-time tech discounts, nationwide delivery benefits, and dedicated hardware concierge contact."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='12' fill='%232C365A'/><path d='M27 7 L14 28 h8 l-3 13 14-22 h-8 z' fill='%23C4BCB0'/></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- Global 3D Canvas -->
+<canvas id="bg3d" aria-hidden="true"></canvas>
+
+<!-- ============ NAVBAR (6 SCREENS) ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner glass">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="ic"><path d="M13.5 2 5 13.5h5.5L10 22l8.5-11.5H13Z"/></svg>
+      </span>
+      <span class="brand-name">Nazeer <em>Electronics</em></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="index.html" class="nav-link">Welcome</a>
+      <a href="auth.html" class="nav-link">Account</a>
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <a href="categories.html" class="nav-link">Categories</a>
+      <a href="store.html" class="nav-link">Store</a>
+      <a href="offers-contact.html" class="nav-link active">Offers &amp; Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="wishBtn" aria-label="Wishlist">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20.3C7.2 16.7 3.8 13.6 3.8 10a4.6 4.6 0 0 1 8.2-2.9A4.6 4.6 0 0 1 20.2 10c0 3.6-3.4 6.7-8.2 10.3Z"/></svg>
+        <span class="bubble" id="wishBadge">0</span>
+      </button>
+      <button class="icon-btn" id="cartBtn" aria-label="Shopping cart">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.3 7.5h11.4l-1 11.6a2 2 0 0 1-2 1.9H9.3a2 2 0 0 1-2-1.9Z"/><path d="M9 10V6.8a3 3 0 0 1 6 0V10"/></svg>
+        <span class="bubble" id="cartBadge">0</span>
+      </button>
+      <button class="icon-btn" id="profileBtn" aria-label="Profile">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8.2" r="3.7"/><path d="M4.8 20.2c1.3-3.3 4-4.9 7.2-4.9s5.9 1.6 7.2 4.9"/></svg>
+        <span class="avatar-initial" id="userInitial" hidden></span>
+      </button>
+      <button class="icon-btn burger" id="burger" aria-label="Menu">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ============ SCREEN 6 · OFFERS & CONTACT ============ -->
+<section class="screen offers" id="offers" style="padding-top: 60px; padding-bottom: 40px;">
+  <div class="orb orb-1" data-parallax="-80"></div>
+  <div class="wrap">
+    <div class="section-head center" data-reveal>
+      <p class="eyebrow">Screen 6 · Privileges &amp; Deals</p>
+      <h2>Deals That Feel Like a Steal</h2>
+      <p class="sub">Authentic Indian festival discounts, transparent Rupee pricing, and free priority air delivery on all flagships.</p>
+    </div>
+
+    <!-- Offers Mosaic with real commercial photography -->
+    <div class="offer-mosaic stagger" style="margin-top: 30px;">
+      <article class="offer-card offer-big glass">
+        <span class="offer-ribbon">Mega Sale</span>
+        <div class="offer-media-wrap">
+          <img src="assets/images/offer_discount.jpg" alt="Mega Sale 50% Off" class="offer-real-img" />
+        </div>
+        <div class="offer-content">
+          <h3>Up to 50% Off</h3>
+          <p>Flagship ultrabooks, smartphones, and noise-cancelling headphones at genuine seasonal reductions.</p>
+          <a href="store.html" class="btn btn-primary">Shop the Sale in Store (Screen 5)</a>
+        </div>
+      </article>
+
+      <article class="offer-card glass">
+        <div class="offer-media-wrap sm">
+          <img src="assets/images/offer_delivery.jpg" alt="Free Nationwide Delivery" class="offer-real-img sm" />
+        </div>
+        <div>
+          <h3>Free Air Express Delivery</h3>
+          <p>On every order — nationwide priority logistics, 100% transit insured &amp; carbon-neutral dispatch.</p>
+        </div>
+      </article>
+
+      <article class="offer-card glass">
+        <div class="offer-media-wrap sm">
+          <img src="assets/images/offer_support.jpg" alt="Exclusive Festival Deals" class="offer-real-img sm" />
+        </div>
+        <div>
+          <h3>Festival Tech Bonanza</h3>
+          <p>Diwali, New Year, and Cyber week privileges. Special bundle deals end in <span class="count" id="cd">--</span></p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Screen 6 · Contact Concierge -->
+<section class="screen contact" id="contact" style="padding-top: 40px; padding-bottom: 80px;">
+  <div class="orb orb-3" data-parallax="60"></div>
+  <div class="wrap">
+    <div class="section-head center" data-reveal>
+      <p class="eyebrow">Screen 6 · Priority Concierge</p>
+      <h2>Let's Talk Tech</h2>
+      <p class="sub">Dedicated hardware specialists available daily — direct support within two hours.</p>
+    </div>
+
+    <div class="contact-grid" style="margin-top: 30px;">
+      <div class="contact-info glass" data-reveal>
+        <div class="agent-real-card">
+          <img src="assets/images/offer_support.jpg" alt="Dedicated Support Specialist" class="agent-real-img" />
+          <div class="agent-real-meta">
+            <span class="agent-status-dot"></span>
+            <strong>Priority Concierge Desk</strong>
+            <small>Active &amp; Ready to Help</small>
+          </div>
+        </div>
+        <h3>Nazeer Electronics Flagship</h3>
+        <ul class="c-list">
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-6.5-5.4-6.5-10a6.5 6.5 0 0 1 13 0c0 4.6-6.5 10-6.5 10Z"/><circle cx="12" cy="11" r="2.3"/></svg> Level 3, Skyline Mall, Marina Boulevard</li>
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l1.5 4.5L8 10a12 12 0 0 0 6 6l1.5-2.5L20 15v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg> <a href="tel:+918001234567">+91 800-123-4567 (Toll-Free)</a></li>
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4.5 7.5 7.5 6 7.5-6"/></svg> <a href="mailto:support@nazeerelectronics.com">support@nazeerelectronics.com</a></li>
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg> Open daily · 9:00 AM – 10:00 PM IST</li>
+        </ul>
+        <div class="mini-cards">
+          <div class="mini"><svg class="ic mini-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 16v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v1"/><path d="M18 8h4a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-4"/><circle cx="7" cy="18.5" r="2.5"/><circle cx="17" cy="18.5" r="2.5"/></svg> Free express delivery across India</div>
+          <div class="mini"><svg class="ic mini-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Visit our flagship showroom store</div>
+        </div>
+      </div>
+
+      <form class="contact-form glass" id="contactForm" novalidate data-reveal>
+        <h3>Send us a Direct Message</h3>
+        <div class="field">
+          <label for="cName">Your Name</label>
+          <div class="control"><input id="cName" type="text" placeholder="Your full name"/></div>
+          <span class="f-err"></span>
+        </div>
+        <div class="field">
+          <label for="cEmail">Email Address</label>
+          <div class="control"><input id="cEmail" type="email" placeholder="you@example.com"/></div>
+          <span class="f-err"></span>
+        </div>
+        <div class="field">
+          <label for="cPhone">Mobile Number <small>(optional)</small></label>
+          <div class="control"><input id="cPhone" type="tel" placeholder="+91 98765 43210"/></div>
+          <span class="f-err"></span>
+        </div>
+        <div class="field">
+          <label for="cMsg">Message or Order Inquiry</label>
+          <div class="control"><textarea id="cMsg" placeholder="How can our technical team assist you today?"></textarea></div>
+          <span class="f-err"></span>
+        </div>
+        <button class="btn btn-primary" type="submit">
+          Send Message
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 3 3 10.5l7 3 3 7Z"/><path d="M21 3 10 13.5"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <!-- Screen Navigation Quick Selector -->
+    <div style="margin-top: 60px; text-align:center;">
+      <p style="color:var(--deep-ocean); font-weight:700; margin-bottom:14px;">Switch to other screens:</p>
+      <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
+        <a href="index.html" class="btn btn-ghost btn-sm">Screen 1: Welcome</a>
+        <a href="auth.html" class="btn btn-ghost btn-sm">Screen 2: Account</a>
+        <a href="dashboard.html" class="btn btn-ghost btn-sm">Screen 3: Dashboard</a>
+        <a href="categories.html" class="btn btn-ghost btn-sm">Screen 4: Categories</a>
+        <a href="store.html" class="btn btn-ghost btn-sm">Screen 5: Store</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="f-col f-brand">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="ic"><path d="M13.5 2 5 13.5h5.5L10 22l8.5-11.5H13Z"/></svg>
+        </span>
+        <span class="brand-name">Nazeer <em>Electronics</em></span>
+      </a>
+      <p>Powering your digital lifestyle with genuine brand warranty, honest Rupee pricing, and instant assistance.</p>
+    </div>
+    <div class="f-col">
+      <h4>6 Screens</h4>
+      <ul>
+        <li><a href="index.html">Screen 1: Welcome</a></li>
+        <li><a href="auth.html">Screen 2: Account Access</a></li>
+        <li><a href="dashboard.html">Screen 3: Dashboard</a></li>
+        <li><a href="categories.html">Screen 4: Categories</a></li>
+        <li><a href="store.html">Screen 5: Store</a></li>
+        <li><a href="offers-contact.html">Screen 6: Offers &amp; Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bar">© 2026 Nazeer Electronics — All 6 Screens Synchronized.</div>
+</footer>
+
+<!-- Drawers -->
+<div class="backdrop" id="backdrop"></div>
+<aside class="drawer" id="cartDrawer" aria-label="Shopping cart">
+  <header class="drawer-head">
+    <h3><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.3 7.5h11.4l-1 11.6a2 2 0 0 1-2 1.9H9.3a2 2 0 0 1-2-1.9Z"/><path d="M9 10V6.8a3 3 0 0 1 6 0V10"/></svg>
+      Your Cart <span class="head-count" id="cartCountTxt"></span></h3>
+    <button class="icon-btn" data-close-drawer aria-label="Close cart"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+  </header>
+  <div class="drawer-body" id="cartItems"></div>
+  <footer class="drawer-foot">
+    <div class="sum-row"><span>Subtotal</span><span id="cartSub">₹0</span></div>
+    <div class="sum-row"><span>Delivery</span><span id="cartDel">Free</span></div>
+    <div class="sum-row total"><span>Total</span><span id="cartTotal">₹0</span></div>
+    <button class="btn btn-primary btn-block" id="checkoutBtn" type="button">Checkout</button>
+  </footer>
+</aside>
+
+<aside class="drawer" id="wishDrawer" aria-label="Wishlist">
+  <header class="drawer-head">
+    <h3><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.3C7.2 16.7 3.8 13.6 3.8 10a4.6 4.6 0 0 1 8.2-2.9A4.6 4.6 0 0 1 20.2 10c0 3.6-3.4 6.7-8.2 10.3Z"/></svg> Wishlist</h3>
+    <button class="icon-btn" data-close-drawer aria-label="Close wishlist"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+  </header>
+  <div class="drawer-body" id="wishItems"></div>
+  <footer class="drawer-foot">
+    <button class="btn btn-ghost btn-block" id="addAllWish" type="button">Add all to Cart</button>
+  </footer>
+</aside>
+
+<div class="popover" id="profilePop">
+  <p class="pop-name" id="popName"></p>
+  <p class="pop-mail" id="popMail"></p>
+  <button class="btn btn-ghost btn-sm btn-block" id="signOutBtn" type="button">Sign Out</button>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

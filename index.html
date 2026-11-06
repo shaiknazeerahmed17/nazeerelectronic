@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nazeer Electronics — Powering Your Digital Lifestyle</title>
+<meta name="description" content="Nazeer Electronics — premium laptops, smartphones, audio and wearables."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='12' fill='%230d3860'/><path d='M27 7 L14 28 h8 l-3 13 14-22 h-8 z' fill='%23ffd166'/></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body class="locked">
+
+<!-- ============ GLOBAL 3D BACKGROUND CANVAS ============ -->
+<canvas id="bg3d" aria-hidden="true"></canvas>
+
+<!-- ============ LOADER ============ -->
+<div id="loader" aria-hidden="true">
+  <div class="ld-inner">
+    <div class="ld-ring">
+      <svg viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="6"/>
+        <circle id="ldRing" cx="60" cy="60" r="52" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+      <span class="ld-bolt">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 2 5 13.5h5.5L10 22l8.5-11.5H13Z"/></svg>
+      </span>
+    </div>
+    <p class="ld-name">Nazeer Electronics</p>
+    <p class="ld-tag">Powering your digital lifestyle</p>
+    <div class="ld-bar"><i id="ldFill"></i></div>
+    <span class="ld-pct" id="ldPct">0%</span>
+  </div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner glass">
+    <a class="brand" href="#home">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="ic"><path d="M13.5 2 5 13.5h5.5L10 22l8.5-11.5H13Z"/></svg>
+      </span>
+      <span class="brand-name">Nazeer <em>Electronics</em></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="index.html" class="nav-link active">Welcome</a>
+      <a href="auth.html" class="nav-link">Account</a>
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <a href="categories.html" class="nav-link">Categories</a>
+      <a href="store.html" class="nav-link">Store</a>
+      <a href="offers-contact.html" class="nav-link">Offers &amp; Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="nav-search" id="navSearch">
+        <input id="searchInput" type="text" placeholder="Search products…" aria-label="Search products"/>
+        <button class="icon-btn" id="searchToggle" aria-label="Toggle search">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20.3 20.3-4.2-4.2"/></svg>
+        </button>
+      </div>
+      <button class="icon-btn" id="wishBtn" aria-label="Wishlist">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20.3C7.2 16.7 3.8 13.6 3.8 10a4.6 4.6 0 0 1 8.2-2.9A4.6 4.6 0 0 1 20.2 10c0 3.6-3.4 6.7-8.2 10.3Z"/></svg>
+        <span class="bubble" id="wishBadge">0</span>
+      </button>
+      <button class="icon-btn" id="cartBtn" aria-label="Shopping cart">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.3 7.5h11.4l-1 11.6a2 2 0 0 1-2 1.9H9.3a2 2 0 0 1-2-1.9Z"/><path d="M9 10V6.8a3 3 0 0 1 6 0V10"/></svg>
+        <span class="bubble" id="cartBadge">0</span>
+      </button>
+      <button class="icon-btn" id="profileBtn" aria-label="Profile">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8.2" r="3.7"/><path d="M4.8 20.2c1.3-3.3 4-4.9 7.2-4.9s5.9 1.6 7.2 4.9"/></svg>
+        <span class="avatar-initial" id="userInitial" hidden></span>
+      </button>
+      <button class="icon-btn burger" id="burger" aria-label="Menu">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ============ SCREEN 1 · HERO ============ -->
+<!-- ============ SCREEN 1 – HERO (CAROUSEL BACKGROUND & REALISTIC SHOWCASE) ============ -->
+<section class="screen hero" id="home">
+  <!-- FULL-BLEED BACKGROUND CAROUSEL -->
+  <div class="hero-bg-carousel" id="heroBgCarousel" aria-hidden="true">
+    <div class="hero-bg-slide active" data-bg-index="0"></div>
+    <div class="hero-bg-slide" data-bg-index="1"></div>
+    <div class="hero-bg-slide" data-bg-index="2"></div>
+    <div class="hero-bg-slide" data-bg-index="3"></div>
+    <div class="hero-bg-slide" data-bg-index="4"></div>
+    <div class="hero-bg-slide" data-bg-index="5"></div>
+    <div class="hero-bg-overlay"></div>
+  </div>
+
+  <div class="hero-inner">
+    <!-- Left Column: Editorial Brand & CTA -->
+    <div class="hero-copy">
+      <p class="eyebrow">Nazeer Electronics • Premium Tech</p>
+      <h1 class="hero-title">
+        Powering Your <br>
+        <span class="accent">Digital Lifestyle.</span>
+      </h1>
+      <p class="hero-sub">
+        Explore India's premier collection of authentic flagship hardware, titanium smartphones, quantum ultrabooks, and studio-grade acoustics. Backed by 100% genuine brand warranty and guaranteed best prices.
+      </p>
+      
+      <div class="hero-cta">
+        <a href="shop.html" class="btn btn-primary btn-glow">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.3 7.5h11.4l-1 11.6a2 2 0 0 1-2 1.9H9.3a2 2 0 0 1-2-1.9Z"/><path d="M9 10V6.8a3 3 0 0 1 6 0V10"/></svg>
+          Shop Flagship Catalog
+        </a>
+        <a href="orders.html" class="btn btn-ghost">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+          Track Live Orders
+        </a>
+      </div>
+
+      <ul class="hero-stats">
+        <li><strong>50k+</strong><span>Happy Tech Lovers</span></li>
+        <li><strong>100%</strong><span>Genuine Warranty</span></li>
+        <li><strong>24/7</strong><span>Priority Support</span></li>
+      </ul>
+    </div>
+
+    <!-- Right Column: Realistic Products Showcase Stage -->
+    <div class="hero-showcase-stage" id="heroShowcaseStage">
+      <div class="hero-card-container">
+        <!-- Top Status & Arrows Bar -->
+        <div class="hero-slider-header">
+          <div class="hero-status-pill" id="heroStatusPill">
+            <span>🔥</span> <span id="heroStatusTxt">#1 BEST SELLER (18.4K+ SOLD)</span>
+          </div>
+          <div class="hero-slide-counter">
+            <span id="heroCurNum">01</span> / <span id="heroTotalNum">06</span>
+          </div>
+          <div class="hero-slider-arrows">
+            <button class="hero-arrow-btn" id="heroPrevBtn" aria-label="Previous Device">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button class="hero-arrow-btn" id="heroNextBtn" aria-label="Next Device">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Slides Viewport (6 Realistic Flagships) -->
+        <div class="hero-slides-viewport" id="heroSlidesViewport">
+          
+          <!-- Slide 1: Apple iPhone 16 Pro Max -->
+          <article class="hero-prod-slide active" data-slide="0" data-base-price="144900" data-old-price="159900" data-save="15000">
+            <div class="hero-media-wrap">
+              <span class="badge-corner">TITANIUM AI</span>
+              <span class="badge-rating"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> 4.9 (4.8k reviews)</span>
+              <img src="assets/images/hero_iphone_real.jpg" alt="Apple iPhone 16 Pro Max Natural Titanium" class="hero-device-img">
+              <span class="badge-stock">🟢 In Stock • Ships in 24h</span>
+              <span class="badge-guarantee"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 100% Genuine Apple</span>
+            </div>
+            <div class="hero-prod-meta">
+              <div class="hero-brand-category">APPLE • FLAGSHIP 5G SMARTPHONE</div>
+              <h3 class="hero-prod-title">iPhone 16 Pro Max 1TB (Natural Titanium)</h3>
+              <p class="hero-prod-desc">Grade 5 Titanium unibody • Next-Gen A18 Pro Bionic AI chip • 48MP Fusion Triple Camera with 5x Optical Zoom</p>
+              
+              <!-- Hardware Specs Grid -->
+              <div class="hero-specs-grid">
+                <div class="hero-spec-item" title="Processor">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M9 2v2m6-2v2m-6 16v2m6-2v2m-13-9h2m-2-6h2m16 6h2m-2-6h2"/></svg>
+                  <span><strong>A18 Pro</strong> 3nm AI Bionic</span>
+                </div>
+                <div class="hero-spec-item" title="Display">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                  <span><strong>6.9" 120Hz</strong> ProMotion XDR</span>
+                </div>
+                <div class="hero-spec-item" title="Camera">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                  <span><strong>48MP Fusion</strong> 5x Telephoto</span>
+                </div>
+                <div class="hero-spec-item" title="Battery & Fast Charge">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="10" x="2" y="7" rx="2"/><path d="M22 11v2"/></svg>
+                  <span><strong>33h Battery</strong> • MagSafe</span>
+                </div>
+              </div>
+
+              <!-- Price & EMI Row -->
+              <div class="hero-price-row">
+                <span class="hero-cur-price" id="slidePrice-0">₹1,44,900</span>
+                <span class="hero-old-price" id="slideOld-0">₹1,59,900</span>
+                <span class="hero-save-badge" id="slideSave-0">Save ₹15,000 (10% Off)</span>
+              </div>
+              <div class="hero-emi-line">
+                <span>No Cost EMI from <strong>₹6,037/mo</strong></span>
+                <span class="tax-tag">• Inclusive of all GST &amp; Taxes</span>
+              </div>
+
+              <!-- Interactive Range Selector -->
+              <div class="hero-range-block">
+                <span class="hero-range-label">Storage Range &amp; Finish:</span>
+                <div class="hero-range-options" data-slide-index="0">
+                  <button class="range-pill-btn" data-price="129900" data-old="144900" data-save="15000" data-variant="128GB">128GB</button>
+                  <button class="range-pill-btn" data-price="134900" data-old="149900" data-save="15000" data-variant="256GB">256GB</button>
+                  <button class="range-pill-btn" data-price="139900" data-old="154900" data-save="15000" data-variant="512GB">512GB</button>
+                  <button class="range-pill-btn active" data-price="144900" data-old="159900" data-save="15000" data-variant="1TB">1TB Natural</button>
+                </div>
+              </div>
+
+              <!-- Special Offer Highlight -->
+              <div class="hero-offer-box">
+                <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                <span><strong>Special Festival Offer:</strong> Flat ₹6,000 Instant Bank Cashback on HDFC/ICICI • Up to ₹25,000 Exchange Bonus • No Cost EMI from ₹6,037/mo</span>
+              </div>
+
+              <!-- Quick Order CTAs -->
+              <div class="hero-actions-row">
+                <button class="btn-hero-cart" onclick="quickHeroAdd(2)">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  Add to Cart
+                </button>
+                <button class="btn-hero-buy" onclick="quickHeroOrder(2, 'Apple iPhone 16 Pro Max 1TB', 144900)">
+                  <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 2 5 13.5h5.5L10 22l8.5-11.5H13Z"/></svg>
+                  ⚡ Buy Now
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 2: Apple MacBook Pro 16" M3 Max -->
+          <article class="hero-prod-slide" data-slide="1" data-base-price="249900" data-old-price="289900" data-save="40000">
+            <div class="hero-media-wrap">
+              <span class="badge-corner">M3 MAX 16-CORE</span>
+              <span class="badge-rating"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> 5.0 (2.2k reviews)</span>
+              <img src="assets/images/hero_macbook_real.jpg" alt="Apple MacBook Pro 16 M3 Max Space Black" class="hero-device-img">
+              <span class="badge-stock">🟢 In Stock • Express Air</span>
+              <span class="badge-guarantee"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Apple India 1-Yr Care</span>
+            </div>
+            <div class="hero-prod-meta">
+              <div class="hero-brand-category">APPLE • PRO CREATOR WORKSTATION</div>
+              <h3 class="hero-prod-title">MacBook Pro 16" M3 Max (Space Black)</h3>
+              <p class="hero-prod-desc">16-Core CPU &amp; 40-Core GPU • Liquid Retina XDR 120Hz 1600nits display • 64GB Unified RAM • 22h battery</p>
+              
+              <!-- Hardware Specs Grid -->
+              <div class="hero-specs-grid">
+                <div class="hero-spec-item" title="Chipset">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M9 2v2m6-2v2m-6 16v2m6-2v2m-13-9h2m-2-6h2m16 6h2m-2-6h2"/></svg>
+                  <span><strong>M3 Max</strong> 16C CPU/40C GPU</span>
+                </div>
+                <div class="hero-spec-item" title="Memory &amp; Storage">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19v-3m4 3v-3m4 3v-3m4 3v-3M2 5h20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg>
+                  <span><strong>64GB Unified</strong> • 1TB SSD</span>
+                </div>
+                <div class="hero-spec-item" title="Display">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                  <span><strong>16.2" XDR</strong> 1600 nits 120Hz</span>
+                </div>
+                <div class="hero-spec-item" title="Battery &amp; I/O">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="10" x="2" y="7" rx="2"/><path d="M22 11v2"/></svg>
+                  <span><strong>22h Battery</strong> • 3x TB4 MagSafe</span>
+                </div>
+              </div>
+
+              <!-- Price & EMI Row -->
+              <div class="hero-price-row">
+                <span class="hero-cur-price" id="slidePrice-1">₹2,49,900</span>
+                <span class="hero-old-price" id="slideOld-1">₹2,89,900</span>
+                <span class="hero-save-badge" id="slideSave-1">Save ₹40,000 (14% Off)</span>
+              </div>
+              <div class="hero-emi-line">
+                <span>No Cost EMI from <strong>₹10,412/mo</strong></span>
+                <span class="tax-tag">• Inclusive of all GST &amp; Taxes</span>
+              </div>
+
+              <!-- Interactive Range Selector -->
+              <div class="hero-range-block">
+                <span class="hero-range-label">Chipset &amp; Unified Memory Range:</span>
+                <div class="hero-range-options" data-slide-index="1">
+                  <button class="range-pill-btn" data-price="199900" data-old="229900" data-save="30000" data-variant="M3 Pro 18C">M3 Pro (18-Core)</button>
+                  <button class="range-pill-btn active" data-price="249900" data-old="289900" data-save="40000" data-variant="M3 Max 36C">M3 Max (36-Core)</button>
+                  <button class="range-pill-btn" data-price="299900" data-old="349900" data-save="50000" data-variant="M3 Max 48C">M3 Max (48-Core Extreme)</button>
+                </div>
+              </div>
+
+              <!-- Special Offer Highlight -->
+              <div class="hero-offer-box">
+                <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                <span><strong>Creator Advantage Offer:</strong> Instant ₹10,000 Card Discount + Free 2-Year AppleCare Plan worth ₹24,900 + Thunderbolt 4 Cable included</span>
+              </div>
+
+              <!-- Quick Order CTAs -->
+              <div class="hero-actions-row">
+                <button class="btn-hero-cart" onclick="quickHeroAdd(11)">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  Add to Cart
+                </button>
+                <button class="btn-hero-buy" onclick="quickHeroOrder(11, 'Apple MacBook Pro 16 M3 Max', 249900)">
+                  <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 2 5 13.5h5.5L10 22l8.5-11.5H13Z"/></svg>
+                  ⚡ Buy Now
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 3: Sony WH-1000XM5 ANC -->
+          <article class="hero-prod-slide" data-slide="2" data-base-price="26990" data-old-price="34990" data-save="8000">
+            <div class="hero-media-wrap">
+              <span class="badge-corner">MASTER ANC DUAL DAC</span>
+              <span class="badge-rating"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> 4.9 (6.1k reviews)</span>
+              <img src="assets/images/hero_sony_real.jpg" alt="Sony WH-1000XM5 Wireless Noise Canceling" class="hero-device-img">
+              <span class="badge-stock">🟢 In Stock • Ready to Ship</span>
+              <span class="badge-guarantee"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 1 Year Sony India</span>
+            </div>
+            <div class="hero-prod-meta">
+              <div class="hero-brand-category">SONY • AUDIOPHILE ACOUSTICS</div>
+              <h3 class="hero-prod-title">Sony WH-1000XM5 ANC (Platinum Silver)</h3>
+              <p class="hero-prod-desc">Industry-leading dual processor V1+QN1 noise cancelling • 30mm carbon fibre drivers • 30h battery with 3-min fast charge</p>
+              
+              <!-- Hardware Specs Grid -->
+              <div class="hero-specs-grid">
+                <div class="hero-spec-item" title="Noise Cancellation">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 10v4m4-7v10m4-13v16m4-11v6m4-9v12m4-7v2"/></svg>
+                  <span><strong>Dual QN1+V1</strong> 8-Mic Auto ANC</span>
+                </div>
+                <div class="hero-spec-item" title="Drivers">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+                  <span><strong>30mm Carbon</strong> Fiber Drivers</span>
+                </div>
+                <div class="hero-spec-item" title="Battery Life">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="10" x="2" y="7" rx="2"/><path d="M22 11v2"/></svg>
+                  <span><strong>30h Playback</strong> (3m = 3h fast)</span>
+                </div>
+                <div class="hero-spec-item" title="Codecs &amp; Audio">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 18h.01M8 18h.01M16 18h.01M9 10a3 3 0 0 1 6 0v4H9v-4z"/></svg>
+                  <span><strong>LDAC Hi-Res</strong> DSEE Extreme</span>
+                </div>
+              </div>
+
+              <!-- Price & EMI Row -->
+              <div class="hero-price-row">
+                <span class="hero-cur-price" id="slidePrice-2">₹26,990</span>
+                <span class="hero-old-price" id="slideOld-2">₹34,990</span>
+                <span class="hero-save-badge" id="slideSave-2">Save ₹8,000 (23% Off)</span>
+              </div>
+              <div class="hero-emi-line">
+                <span>No Cost EMI from <strong>₹1,124/mo</strong></span>
+                <span class="tax-tag">• Inclusive of all GST &amp; Taxes</span>
+              </div>
+
+              <!-- Interactive Range Selector -->
+              <div class="hero-range-block">
+                <span class="hero-range-label">Color &amp; Edition Range:</span>
+                <div class="hero-range-options" data-slide-index="2">
+                  <button class="range-pill-btn active" data-price="26990" data-old="34990" data-save="8000" data-variant="Silver Platinum">Silver Platinum</button>
+                  <button class="range-pill-btn" data-price="26990" data-old="34990" data-save="8000" data-variant="Midnight Black">Midnight Black</button>
+                  <button class="range-pill-btn" data-price="28990" data-old="36990" data-save="8000" data-variant="Smoked Cream">Smoked Cream Edition</button>
+                </div>
+              </div>
+
+              <!-- Special Offer Highlight -->
+              <div class="hero-offer-box">
+                <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                <span><strong>Acoustic Festival Offer:</strong> Extra 10% Off with coupon NAZEER2026 + Free Hard Travel Case worth ₹2,999 + 6 Months Lossless Music Subscription</span>
+              </div>
+
+              <!-- Quick Order CTAs -->
+              <div class="hero-actions-row">
+                <button class="btn-hero-cart" onclick="quickHeroAdd(6)">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  Add to Cart
+                </button>
+                <button class="btn-hero-buy" onclick="quickHeroOrder(6, 'Sony WH-1000XM5 ANC', 26990)">
+                  <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 2 5 13.5h5.5L10 22l8.5-11.5H13Z"/></svg>
+                  ⚡ Buy Now
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 4: Samsung Galaxy S24 Ultra -->
+          <article class="hero-prod-slide" data-slide="3" data-base-price="119999" data-old-price="134999" data-save="15000">
+            <div class="hero-media-wrap">
+              <span class="badge-corner">GALAXY AI S-PEN</span>
+              <span class="badge-rating"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> 4.9 (5.2k reviews)</span>
+              <img src="assets/images/hero_s24_real.jpg" alt="Samsung Galaxy S24 Ultra Titanium Gray" class="hero-device-img">
+              <span class="badge-stock">🟢 In Stock • Dispatching Today</span>
+              <span class="badge-guarantee"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 1 Year Samsung India</span>
+            </div>
+            <div class="hero-prod-meta">
+              <div class="hero-brand-category">SAMSUNG • FLAGSHIP 5G SMARTPHONE</div>
+              <h3 class="hero-prod-title">Galaxy S24 Ultra AI 5G (Titanium Gray)</h3>
+              <p class="hero-prod-desc">Built-in Galaxy AI live translation &amp; circle-to-search • 200MP Quad Telephoto camera • Integrated active S-Pen stylus</p>
+              
+              <!-- Hardware Specs Grid -->
+              <div class="hero-specs-grid">
+                <div class="hero-spec-item" title="Processor">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M9 2v2m6-2v2m-6 16v2m6-2v2m-13-9h2m-2-6h2m16 6h2m-2-6h2"/></svg>
+                  <span><strong>Snap 8 Gen 3</strong> for Galaxy (4nm)</span>
+                </div>
+                <div class="hero-spec-item" title="Display">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                  <span><strong>6.8" 2600nits</strong> QHD+ AMOLED 2X</span>
+                </div>
+                <div class="hero-spec-item" title="Camera">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                  <span><strong>200MP Quad</strong> 100x Space Zoom</span>
+                </div>
+                <div class="hero-spec-item" title="Stylus &amp; Battery">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 2 4 4-12 12H6v-4L18 2Z"/></svg>
+                  <span><strong>S-Pen Built-in</strong> • 5000mAh 45W</span>
+                </div>
+              </div>
+
+              <!-- Price & EMI Row -->
+              <div class="hero-price-row">
+                <span class="hero-cur-price" id="slidePrice-3">₹1,19,999</span>
+                <span class="hero-old-price" id="slideOld-3">₹1,34,999</span>
+                <span class="hero-save-badge" id="slideSave-3">Save ₹15,000 (11% Off)</span>
+              </div>
+              <div class="hero-emi-line">
+                <span>No Cost EMI from <strong>₹4,999/mo</strong></span>
+                <span class="tax-tag">• Inclusive of all GST &amp; Taxes</span>
+              </div>
+
+              <!-- Interactive Range Selector -->
+              <div class="hero-range-block">
+                <span class="hero-range-label">Storage &amp; RAM Range:</span>
+                <div class="hero-range-options" data-slide-index="3">
+                  <button class="range-pill-btn active" data-price="119999" data-old="134999" data-save="15000" data-variant="256GB">256GB / 12GB</button>
+                  <button class="range-pill-btn" data-price="129999" data-old="144999" data-save="15000" data-variant="512GB">512GB / 12GB</button>
+                  <button class="range-pill-btn" data-price="144999" data-old="159999" data-save="15000" data-variant="1TB">1TB / 12GB</button>
+                </div>
+              </div>
+
+              <!-- Special Offer Highlight -->
+              <div class="hero-offer-box">
+                <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                <span><strong>Mega Bundle Deal:</strong> ₹12,000 Upgrade Bonus + Galaxy Buds FE at just ₹999 + 45W Ultra-Fast GaN Charger included free</span>
+              </div>
+
+              <!-- Quick Order CTAs -->
+              <div class="hero-actions-row">
+                <button class="btn-hero-cart" onclick="quickHeroAdd(3)">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  Add to Cart
+                </button>
+                <button class="btn-hero-buy" onclick="quickHeroOrder(3, 'Samsung Galaxy S24 Ultra AI', 119999)">
+                  <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 2 5 13.5h5.5L10 22l8.5-11.5H13Z"/></svg>
+                  ⚡ Buy Now
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 5: Apple Watch Ultra 2 -->
+          <article class="hero-prod-slide" data-slide="4" data-base-price="79900" data-old-price="89900" data-save="10000">
+            <div class="hero-media-wrap">
+              <span class="badge-corner">3000 NITS SAPPHIRE</span>
+              <span class="badge-rating"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> 4.9 (3.9k reviews)</span>
+              <img src="assets/images/hero_watch_real.jpg" alt="Apple Watch Ultra 2 Titanium 49mm" class="hero-device-img">
+              <span class="badge-stock">🟢 In Stock • Priority Air</span>
+              <span class="badge-guarantee"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 100% Genuine Apple</span>
+            </div>
+            <div class="hero-prod-meta">
+              <div class="hero-brand-category">APPLE • EXPEDITION WEARABLE</div>
+              <h3 class="hero-prod-title">Apple Watch Ultra 2 (49mm Titanium)</h3>
+              <p class="hero-prod-desc">Grade 5 Titanium case • 3000 nits Always-On LTPO display • Dual-frequency precision GPS • 100m water resistance</p>
+              
+              <!-- Hardware Specs Grid -->
+              <div class="hero-specs-grid">
+                <div class="hero-spec-item" title="Chassis">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span><strong>49mm Grade 5</strong> Titanium Unibody</span>
+                </div>
+                <div class="hero-spec-item" title="Display">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  <span><strong>3000 nits</strong> Sapphire LTPO OLED</span>
+                </div>
+                <div class="hero-spec-item" title="Navigation">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                  <span><strong>Dual-Freq L1+L5</strong> Precision GPS</span>
+                </div>
+                <div class="hero-spec-item" title="Battery &amp; Durability">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="10" x="2" y="7" rx="2"/><path d="M22 11v2"/></svg>
+                  <span><strong>72h Low Power</strong> • 100m WR100</span>
+                </div>
+              </div>
+
+              <!-- Price & EMI Row -->
+              <div class="hero-price-row">
+                <span class="hero-cur-price" id="slidePrice-4">₹79,900</span>
+                <span class="hero-old-price" id="slideOld-4">₹89,900</span>
+                <span class="hero-save-badge" id="slideSave-4">Save ₹10,000 (11% Off)</span>
+              </div>
+              <div class="hero-emi-line">
+                <span>No Cost EMI from <strong>₹3,329/mo</strong></span>
+                <span class="tax-tag">• Inclusive of all GST &amp; Taxes</span>
+              </div>
+
+              <!-- Interactive Range Selector -->
+              <div class="hero-range-block">
+                <span class="hero-range-label">Band / Strap Range:</span>
+                <div class="hero-range-options" data-slide-index="4">
+                  <button class="range-pill-btn active" data-price="79900" data-old="89900" data-save="10000" data-variant="Alpine Loop">Alpine Loop (Orange)</button>
+                  <button class="range-pill-btn" data-price="79900" data-old="89900" data-save="10000" data-variant="Trail Loop">Trail Loop (Charcoal)</button>
+                  <button class="range-pill-btn" data-price="82900" data-old="92900" data-save="10000" data-variant="Ocean Band">Ocean Band (Navy)</button>
+                </div>
+              </div>
+
+              <!-- Special Offer Highlight -->
+              <div class="hero-offer-box">
+                <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                <span><strong>Outdoor Adventure Offer:</strong> Flat ₹4,000 Instant Bank Cashback + Free Fast Magnetic Charger + 1 Year Apple Fitness+ Subscription</span>
+              </div>
+
+              <!-- Quick Order CTAs -->
+              <div class="hero-actions-row">
+                <button class="btn-hero-cart" onclick="quickHeroAdd(13)">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  Add to Cart
+                </button>
+                <button class="btn-hero-buy" onclick="quickHeroOrder(13, 'Apple Watch Ultra 2 Titanium', 79900)">
+                  <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 2 5 13.5h5.5L10 22l8.5-11.5H13Z"/></svg>
+                  ⚡ Buy Now
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 6: Marshall Stanmore III -->
+          <article class="hero-prod-slide" data-slide="5" data-base-price="37999" data-old-price="42999" data-save="5000">
+            <div class="hero-media-wrap">
+              <span class="badge-corner">80W STEREO STAGE</span>
+              <span class="badge-rating"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> 4.8 (2.7k reviews)</span>
+              <img src="assets/images/hero_speaker_real.jpg" alt="Marshall Stanmore III Bluetooth Speaker" class="hero-device-img">
+              <span class="badge-stock">🟢 In Stock • Ready to Dispatch</span>
+              <span class="badge-guarantee"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 1 Year Marshall India</span>
+            </div>
+            <div class="hero-prod-meta">
+              <div class="hero-brand-category">MARSHALL • HERITAGE AUDIO</div>
+              <h3 class="hero-prod-title">Marshall Stanmore III Bluetooth Speaker</h3>
+              <p class="hero-prod-desc">80W room-filling wider stereo soundstage • Vintage textured leatherette &amp; brass analog knobs • Bluetooth 5.2 + RCA &amp; 3.5mm</p>
+              
+              <!-- Hardware Specs Grid -->
+              <div class="hero-specs-grid">
+                <div class="hero-spec-item" title="Amplification">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 10v4m4-7v10m4-13v16m4-11v6m4-9v12m4-7v2"/></svg>
+                  <span><strong>80W Class-D</strong> Woofer + Tweeters</span>
+                </div>
+                <div class="hero-spec-item" title="Acoustics">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+                  <span><strong>Dynamic Loudness</strong> &amp; Placement EQ</span>
+                </div>
+                <div class="hero-spec-item" title="Connectivity">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19v-3m4 3v-3m4 3v-3m4 3v-3M2 5h20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg>
+                  <span><strong>Bluetooth 5.2</strong> + RCA &amp; 3.5mm Aux</span>
+                </div>
+                <div class="hero-spec-item" title="Design">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="14" x="3" y="5" rx="2"/><path d="M7 10h2m4 0h4"/></svg>
+                  <span><strong>Brass Knobs</strong> Vintage Fret Grille</span>
+                </div>
+              </div>
+
+              <!-- Price & EMI Row -->
+              <div class="hero-price-row">
+                <span class="hero-cur-price" id="slidePrice-5">₹37,999</span>
+                <span class="hero-old-price" id="slideOld-5">₹42,999</span>
+                <span class="hero-save-badge" id="slideSave-5">Save ₹5,000 (12% Off)</span>
+              </div>
+              <div class="hero-emi-line">
+                <span>No Cost EMI from <strong>₹1,583/mo</strong></span>
+                <span class="tax-tag">• Inclusive of all GST &amp; Taxes</span>
+              </div>
+
+              <!-- Interactive Range Selector -->
+              <div class="hero-range-block">
+                <span class="hero-range-label">Color &amp; Finish Range:</span>
+                <div class="hero-range-options" data-slide-index="5">
+                  <button class="range-pill-btn active" data-price="37999" data-old="42999" data-save="5000" data-variant="Vintage Black">Vintage Black</button>
+                  <button class="range-pill-btn" data-price="37999" data-old="42999" data-save="5000" data-variant="Cream White">Cream White</button>
+                  <button class="range-pill-btn" data-price="39999" data-old="44999" data-save="5000" data-variant="Brown Leather">Brown Leather</button>
+                </div>
+              </div>
+
+              <!-- Special Offer Highlight -->
+              <div class="hero-offer-box">
+                <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                <span><strong>Acoustic Heritage Deal:</strong> Flat ₹2,500 Instant Bank Discount + Free High-Fidelity Gold-Plated Audio Cable + 2-Year Extended Service Warranty</span>
+              </div>
+
+              <!-- Quick Order CTAs -->
+              <div class="hero-actions-row">
+                <button class="btn-hero-cart" onclick="quickHeroAdd(14)">
+                  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  Add to Cart
+                </button>
+                <button class="btn-hero-buy" onclick="quickHeroOrder(14, 'Marshall Stanmore III Speaker', 37999)">
+                  <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 2 5 13.5h5.5L10 22l8.5-11.5H13Z"/></svg>
+                  ⚡ Buy Now
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Slider Dots Navigation (6 Dots) -->
+        <div class="hero-slider-bottom">
+          <div class="hero-slider-dot active" data-slide="0"><div class="dot-prog"></div></div>
+          <div class="hero-slider-dot" data-slide="1"><div class="dot-prog"></div></div>
+          <div class="hero-slider-dot" data-slide="2"><div class="dot-prog"></div></div>
+          <div class="hero-slider-dot" data-slide="3"><div class="dot-prog"></div></div>
+          <div class="hero-slider-dot" data-slide="4"><div class="dot-prog"></div></div>
+          <div class="hero-slider-dot" data-slide="5"><div class="dot-prog"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a class="scroll-cue" href="#screenPortal" aria-label="Scroll down">
+    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+  </a>
+</section>
+
+<!-- ============ 6 DIFFERENT SCREENS ACROSS 6 DIFFERENT PAGES ============ -->
+<section class="screen-portal-section wrap" id="screenPortal" style="margin: 40px auto 60px; padding: 0 24px;">
+  <div class="glass hover-lift" style="padding: 28px 32px; border-radius: 22px; border: 1px solid var(--beige); background: rgba(247, 244, 238, 0.9); box-shadow: 0 16px 36px -12px rgba(44, 54, 90, 0.15);">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 22px;">
+      <div>
+        <span class="pill" style="margin-bottom: 6px;">6 Separate Screens • 6 Distinct Pages</span>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.65rem; color: var(--deep-ocean); margin: 0;">Multi-Page Screen Architecture</h3>
+      </div>
+      <p style="color: #666; font-size: 0.92rem; max-width: 480px; margin: 0;">Each of the 6 screens is fully separated into its own dedicated HTML page, complete with authentic commercial photography, Indian Rupee (₹) pricing, and synchronized state.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px;">
+      <a href="index.html" class="portal-card active" style="padding: 16px; border-radius: 14px; text-decoration: none; border: 1px solid var(--deep-ocean); background: var(--deep-ocean); color: var(--cream); display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 0.72rem; font-weight: 800; opacity: 0.8; letter-spacing: 1.2px;">SCREEN 1</span>
+        <strong style="font-size: 1rem;">1. Welcome &amp; Hero</strong>
+        <small style="opacity: 0.85;">6 Realistic Flagship Slides (3s Timer)</small>
+      </a>
+
+      <a href="auth.html" class="portal-card" style="padding: 16px; border-radius: 14px; text-decoration: none; border: 1px solid var(--beige); background: var(--cream); color: var(--deep-ocean); display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 0.72rem; font-weight: 800; color: #888; letter-spacing: 1.2px;">SCREEN 2</span>
+        <strong style="font-size: 1rem;">2. Account Access</strong>
+        <small style="color: #666;">Sign In, Sign Up &amp; VIP Perks</small>
+      </a>
+
+      <a href="dashboard.html" class="portal-card" style="padding: 16px; border-radius: 14px; text-decoration: none; border: 1px solid var(--beige); background: var(--cream); color: var(--deep-ocean); display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 0.72rem; font-weight: 800; color: #888; letter-spacing: 1.2px;">SCREEN 3</span>
+        <strong style="font-size: 1rem;">3. Dashboard</strong>
+        <small style="color: #666;">Ultrabook Drops &amp; Highlights</small>
+      </a>
+
+      <a href="categories.html" class="portal-card" style="padding: 16px; border-radius: 14px; text-decoration: none; border: 1px solid var(--beige); background: var(--cream); color: var(--deep-ocean); display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 0.72rem; font-weight: 800; color: #888; letter-spacing: 1.2px;">SCREEN 4</span>
+        <strong style="font-size: 1rem;">4. Categories</strong>
+        <small style="color: #666;">6 Hardware Ecosystem Worlds</small>
+      </a>
+
+      <a href="store.html" class="portal-card" style="padding: 16px; border-radius: 14px; text-decoration: none; border: 1px solid var(--beige); background: var(--cream); color: var(--deep-ocean); display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 0.72rem; font-weight: 800; color: #888; letter-spacing: 1.2px;">SCREEN 5</span>
+        <strong style="font-size: 1rem;">5. Product Store</strong>
+        <small style="color: #666;">16 Flagships &amp; 3D Customizer</small>
+      </a>
+
+      <a href="offers-contact.html" class="portal-card" style="padding: 16px; border-radius: 14px; text-decoration: none; border: 1px solid var(--beige); background: var(--cream); color: var(--deep-ocean); display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 0.72rem; font-weight: 800; color: #888; letter-spacing: 1.2px;">SCREEN 6</span>
+        <strong style="font-size: 1rem;">6. Offers &amp; Contact</strong>
+        <small style="color: #666;">Mega Sale 50% &amp; Support Desk</small>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCREEN 2 · AUTHENTICATION ============ -->
+<section class="screen auth" id="auth">
+  <div class="orb orb-2" data-parallax="100"></div>
+  <div class="auth-deco deco-phone" data-pan="26"><img src="assets/images/auth_phone.jpg" alt="Authentic Smart Devices" class="auth-real-img" /></div>
+  <div class="auth-deco deco-laptop" data-pan="16"><img src="assets/images/auth_laptop.jpg" alt="Pro Hardware" class="auth-real-img" /></div>
+  <div class="auth-deco deco-watch" data-pan="34"><img src="assets/images/auth_watch.jpg" alt="Precision Wearables" class="auth-real-img" /></div>
+
+  <div class="wrap">
+    <div class="section-head center" data-reveal>
+      <p class="eyebrow">Members Area</p>
+      <h2>Your Account, Beautifully Simple</h2>
+      <p class="sub">Sign in to sync your cart and wishlist, or create an account in under a minute.</p>
+    </div>
+
+    <div class="auth-panel glass" data-reveal>
+      <div class="auth-tabs">
+        <span class="tab-ink" id="tabInk"></span>
+        <button class="auth-tab active" data-tab="login" type="button">Sign In</button>
+        <button class="auth-tab" data-tab="signup" type="button">Sign Up</button>
+      </div>
+
+      <form class="auth-form active" id="loginForm" novalidate>
+        <div class="field">
+          <label for="loginEmail">Email</label>
+          <div class="control"><input id="loginEmail" type="email" placeholder="you@example.com" autocomplete="email"/></div>
+          <span class="f-err"></span>
+        </div>
+        <div class="field">
+          <label for="loginPassword">Password</label>
+          <div class="control">
+            <input id="loginPassword" type="password" placeholder="••••••••" autocomplete="current-password"/>
+            <button type="button" class="eye" data-eye="loginPassword" aria-label="Show password">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <span class="f-err"></span>
+        </div>
+        <div class="form-row">
+          <label class="check"><input type="checkbox" id="remember"/> Remember me</label>
+          <a href="#contact" class="link" data-support="password recovery">Forgot password?</a>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">
+          Sign In
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </button>
+      </form>
+
+      <form class="auth-form" id="signupForm" novalidate>
+        <div class="field">
+          <label for="suName">Full Name</label>
+          <div class="control"><input id="suName" type="text" placeholder="Nazeer Ahmed" autocomplete="name"/></div>
+          <span class="f-err"></span>
+        </div>
+        <div class="field">
+          <label for="suEmail">Email</label>
+          <div class="control"><input id="suEmail" type="email" placeholder="you@example.com" autocomplete="email"/></div>
+          <span class="f-err"></span>
+        </div>
+        <div class="field">
+          <label for="suPhone">Mobile Number</label>
+          <div class="control"><input id="suPhone" type="tel" placeholder="+1 555 0100" autocomplete="tel"/></div>
+          <span class="f-err"></span>
+        </div>
+        <div class="field">
+          <label for="suPassword">Password</label>
+          <div class="control">
+            <input id="suPassword" type="password" placeholder="Min. 6 characters" autocomplete="new-password"/>
+            <button type="button" class="eye" data-eye="suPassword" aria-label="Show password">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <span class="f-err"></span>
+        </div>
+        <div class="field">
+          <label for="suConfirm">Confirm Password</label>
+          <div class="control"><input id="suConfirm" type="password" placeholder="Repeat password" autocomplete="new-password"/></div>
+          <span class="f-err"></span>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Create Account</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCREEN 3 · HOME DASHBOARD ============ -->
+<section class="screen dash" id="dashboard">
+  <div class="orb orb-1" data-parallax="-90"></div>
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">Home Dashboard</p>
+      <h2>Latest Electronics at <br/>Amazing Prices</h2>
+      <p class="sub">Today's hand-picked drops, straight from the Nazeer warehouse.</p>
+    </div>
+
+    <nav class="quicknav glass" data-reveal aria-label="Dashboard quick access">
+      <a class="q-link active" href="#home">Home</a>
+      <a class="q-link" href="#categories">Categories</a>
+      <a class="q-link" href="#store">Products</a>
+      <a class="q-link" href="#offers">Offers</a>
+      <a class="q-link" href="studio.html">3D Studio</a>
+      <a class="q-link" href="orders.html">My Orders</a>
+      <button class="q-link" type="button" data-quick="cart">Cart</button>
+      <a class="q-link" href="account.html">Account</a>
+    </nav>
+
+    <div class="banner glass hover-lift" data-reveal>
+      <div class="banner-copy">
+        <span class="pill">New Season Drop</span>
+        <h3>Ultrabook Air X1 — Thin. Fast. Unreal.</h3>
+        <p>1.1&nbsp;kg of machined aluminium, a 2.8K sky-bright display and 18 hours of battery. Your next everyday masterpiece.</p>
+        <div class="banner-cta" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px;">
+          <button class="btn btn-primary" type="button" data-add="7">Add to Cart</button>
+          <button class="btn btn-ghost" type="button" data-inspect-3d="7">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            3D View
+          </button>
+        </div>
+      </div>
+      <div class="banner-img-wrap">
+        <img src="assets/images/hero_macbook_real.jpg" alt="Ultrabook Air X1 Flagship" class="banner-real-img" />
+      </div>
+      <span class="seal">-19%</span>
+    </div>
+
+    <div class="featured-head" data-reveal>
+      <h3 class="row-title">Featured Flagships</h3>
+      <a href="shop.html" class="link">Explore all multi-brand products →</a>
+    </div>
+    <div class="featured-grid" id="featuredGrid"></div>
+  </div>
+</section>
+
+<!-- ============ SCREEN 4 · CATEGORIES ============ -->
+<section class="screen cats" id="categories">
+  <div class="orb orb-3" data-parallax="70"></div>
+  <div class="wrap">
+    <div class="section-head center" data-reveal>
+      <p class="eyebrow">Browse</p>
+      <h2>Shop by Category</h2>
+      <p class="sub">Six worlds of tech — tap any category to jump straight into the store.</p>
+    </div>
+    <div class="cat-grid stagger">
+      <button class="cat-card tilt" type="button" data-cat="laptops" style="--c:#1f7ae0">
+        <span class="cat-go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+        <div class="cat-img-wrap"><img src="assets/images/cat_laptops.jpg" alt="Laptops" class="cat-real-img" /></div>
+        <h3>Laptops</h3><p>42 products</p>
+      </button>
+      <button class="cat-card tilt" type="button" data-cat="phones" style="--c:#12b5a2">
+        <span class="cat-go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+        <div class="cat-img-wrap"><img src="assets/images/cat_phones.jpg" alt="Smartphones" class="cat-real-img" /></div>
+        <h3>Smartphones</h3><p>36 products</p>
+      </button>
+      <button class="cat-card tilt" type="button" data-cat="audio" style="--c:#ff7a59">
+        <span class="cat-go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+        <div class="cat-img-wrap"><img src="assets/images/cat_headphones.jpg" alt="Headphones" class="cat-real-img" /></div>
+        <h3>Headphones</h3><p>28 products</p>
+      </button>
+      <button class="cat-card tilt" type="button" data-cat="wearables" style="--c:#f0a52c">
+        <span class="cat-go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+        <div class="cat-img-wrap"><img src="assets/images/cat_watches.jpg" alt="Smart Watches" class="cat-real-img" /></div>
+        <h3>Smart Watches</h3><p>19 products</p>
+      </button>
+      <button class="cat-card tilt" type="button" data-cat="gaming" style="--c:#ef5da8">
+        <span class="cat-go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+        <div class="cat-img-wrap"><img src="assets/images/cat_gaming.jpg" alt="Gaming" class="cat-real-img" /></div>
+        <h3>Gaming</h3><p>24 products</p>
+      </button>
+      <button class="cat-card tilt" type="button" data-cat="speakers" style="--c:#38b6ff">
+        <span class="cat-go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+        <div class="cat-img-wrap"><img src="assets/images/cat_speakers.jpg" alt="Speakers" class="cat-real-img" /></div>
+        <h3>Speakers</h3><p>17 products</p>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCREEN 5 · PRODUCT STORE ============ -->
+<section class="screen store" id="store">
+  <div class="orb orb-2" data-parallax="110"></div>
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">Product Store</p>
+      <h2>Gear That Fits Your Flow</h2>
+      <p class="sub">Warranty included, 30-day free returns, sky-fast delivery.</p>
+    </div>
+
+    <div class="toolbar" data-reveal>
+      <div class="filters" id="filters">
+        <button class="f-chip active" data-filter="all">All</button>
+        <button class="f-chip" data-filter="laptops">Laptops</button>
+        <button class="f-chip" data-filter="phones">Smartphones</button>
+        <button class="f-chip" data-filter="audio">Headphones</button>
+        <button class="f-chip" data-filter="speakers">Speakers</button>
+        <button class="f-chip" data-filter="wearables">Smart Watches</button>
+        <button class="f-chip" data-filter="tablets">Tablets</button>
+        <button class="f-chip" data-filter="gaming">Gaming</button>
+      </div>
+      <div class="toolbar-right">
+        <span class="count-pill glass" id="resultCount">6 products</span>
+        <label class="store-search glass">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20.3 20.3-4.2-4.2"/></svg>
+          <input id="storeSearch" type="text" placeholder="Search in store…" aria-label="Search in store"/>
+          <button class="clear-btn" id="clearSearch" hidden aria-label="Clear search">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg>
+          </button>
+        </label>
+      </div>
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- ============ SCREEN 6 · OFFERS + CONTACT ============ -->
+<section class="screen offers" id="offers">
+  <div class="orb orb-1" data-parallax="-80"></div>
+  <div class="wrap">
+    <div class="section-head center" data-reveal>
+      <p class="eyebrow">Offers &amp; Deals</p>
+      <h2>Deals That Feel Like a Steal</h2>
+      <p class="sub">Real discounts on real hardware — no inflated "was" prices, ever.</p>
+    </div>
+
+    <div class="offer-mosaic stagger">
+      <article class="offer-card offer-big glass">
+        <span class="offer-ribbon">Mega Sale</span>
+        <div class="offer-media-wrap">
+          <img src="assets/images/offer_discount.jpg" alt="Mega Sale 50% Off" class="offer-real-img" />
+        </div>
+        <div class="offer-content">
+          <h3>Up to 50% Off</h3>
+          <p>Flagship laptops, phones and audio at their lowest prices of the season.</p>
+          <button class="btn btn-primary" type="button" data-goto="#store">Shop the Sale</button>
+        </div>
+      </article>
+      <article class="offer-card glass">
+        <div class="offer-media-wrap sm">
+          <img src="assets/images/offer_delivery.jpg" alt="Free Nationwide Delivery" class="offer-real-img sm" />
+        </div>
+        <div><h3>Free Delivery</h3><p>On every order — nationwide express air delivery, 100% insured &amp; carbon-neutral.</p></div>
+      </article>
+      <article class="offer-card glass">
+        <div class="offer-media-wrap sm">
+          <img src="assets/images/offer_support.jpg" alt="Exclusive Festival Deals" class="offer-real-img sm" />
+        </div>
+        <div><h3>Festival Deals</h3><p>Exclusive seasonal discounts and bundled warranties. Ends in <span class="count" id="cd">--</span></p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="screen contact" id="contact">
+  <div class="orb orb-3" data-parallax="60"></div>
+  <div class="wrap">
+    <div class="section-head center" data-reveal>
+      <p class="eyebrow">Contact</p>
+      <h2>Let's Talk Tech</h2>
+      <p class="sub">Real humans, real answers — usually within two hours.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info glass" data-reveal>
+        <div class="agent-real-card">
+          <img src="assets/images/offer_support.jpg" alt="Dedicated Support Team" class="agent-real-img" />
+          <div class="agent-real-meta">
+            <span class="agent-status-dot"></span>
+            <strong>Priority Concierge Desk</strong>
+            <small>Active &amp; Ready to Help</small>
+          </div>
+        </div>
+        <h3>Nazeer Electronics Flagship</h3>
+        <ul class="c-list">
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.4-6.5-10a6.5 6.5 0 0 1 13 0c0 4.6-6.5 10-6.5 10Z"/><circle cx="12" cy="11" r="2.3"/></svg> Level 3, Skyline Mall, Marina Boulevard</li>
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l1.5 4.5L8 10a12 12 0 0 0 6 6l1.5-2.5L20 15v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg> <a href="tel:+918001234567">+91 800-123-4567 (Toll-Free)</a></li>
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4.5 7.5 7.5 6 7.5-6"/></svg> <a href="mailto:support@nazeerelectronics.com">support@nazeerelectronics.com</a></li>
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg> Open daily · 9:00 AM – 10:00 PM IST</li>
+        </ul>
+        <div class="mini-cards">
+          <div class="mini"><svg class="ic mini-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 16v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v1"/><path d="M18 8h4a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-4"/><circle cx="7" cy="18.5" r="2.5"/><circle cx="17" cy="18.5" r="2.5"/></svg> Free express delivery across India</div>
+          <div class="mini"><svg class="ic mini-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Visit our flagship showroom store</div>
+        </div>
+      </div>
+
+      <form class="contact-form glass" id="contactForm" novalidate data-reveal>
+        <h3>Send us a Message</h3>
+        <div class="field">
+          <label for="cName">Name</label>
+          <div class="control"><input id="cName" type="text" placeholder="Your full name"/></div>
+          <span class="f-err"></span>
+        </div>
+        <div class="field">
+          <label for="cEmail">Email</label>
+          <div class="control"><input id="cEmail" type="email" placeholder="you@example.com"/></div>
+          <span class="f-err"></span>
+        </div>
+        <div class="field">
+          <label for="cPhone">Phone <small>(optional)</small></label>
+          <div class="control"><input id="cPhone" type="tel" placeholder="+1 555 0100"/></div>
+          <span class="f-err"></span>
+        </div>
+        <div class="field">
+          <label for="cMsg">Message</label>
+          <div class="control"><textarea id="cMsg" placeholder="How can we help?"></textarea></div>
+          <span class="f-err"></span>
+        </div>
+        <button class="btn btn-primary" type="submit">
+          Send Message
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3 3 10.5l7 3 3 7Z"/><path d="M21 3 10 13.5"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="f-col f-brand">
+      <a class="brand" href="#home">
+        <span class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="ic"><path d="M13.5 2 5 13.5h5.5L10 22l8.5-11.5H13Z"/></svg>
+        </span>
+        <span class="brand-name">Nazeer <em>Electronics</em></span>
+      </a>
+      <p>Powering your digital lifestyle with premium tech, honest prices and support that actually answers.</p>
+      <div class="socials">
+        <a class="soc" href="#" aria-label="Facebook"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M13.4 21v-7.2h2.4l.4-2.9h-2.8V9c0-.8.3-1.4 1.5-1.4h1.4V5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.2H8v2.9h2.4V21Z"/></svg></a>
+        <a class="soc" href="#" aria-label="Instagram"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.8" cy="7.2" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a class="soc" href="#" aria-label="X"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M4.2 4h4.3l4 5.7L17.3 4H20l-6.2 7.3L20.5 20h-4.3l-4.3-6.1L6.6 20H4l6.5-7.7Z"/></svg></a>
+        <a class="soc" href="#" aria-label="YouTube"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.6 2.6 0 0 0-1.8-1.9C18.2 5 12 5 12 5s-6.2 0-7.8.3A2.6 2.6 0 0 0 2.4 7.2 27 27 0 0 0 2 12a27 27 0 0 0 .4 4.8 2.6 2.6 0 0 0 1.8 1.9c1.6.3 7.8.3 7.8.3s6.2 0 7.8-.3a2.6 2.6 0 0 0 1.8-1.9A27 27 0 0 0 22 12a27 27 0 0 0-.4-4.8ZM10 15.2V8.8l5.5 3.2Z"/></svg></a>
+      </div>
+    </div>
+    <div class="f-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home Flagships</a></li>
+        <li><a href="#categories">Shop by Category</a></li>
+        <li><a href="#store">Store Catalog</a></li>
+        <li><a href="#offers">Deals &amp; Offers</a></li>
+        <li><a href="studio.html">3D Studio</a></li>
+        <li><a href="orders.html">Track Orders</a></li>
+        <li><a href="#contact">Contact Support</a></li>
+        <li><a href="account.html">My Account</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>Customer Support</h4>
+      <ul>
+        <li><a href="#contact" data-support="support tickets">Contact Support</a></li>
+        <li><a href="#contact" data-support="warranty claims">Warranty</a></li>
+        <li><a href="#contact" data-support="shipping &amp; returns">Shipping &amp; Returns</a></li>
+        <li><a href="#contact" data-support="order tracking">Track Order</a></li>
+      </ul>
+    </div>
+    <div class="f-col f-news">
+      <h4>Newsletter</h4>
+      <p>One email a week — new drops, honest reviews and subscriber-only discounts.</p>
+      <form class="news-form" id="newsForm" novalidate>
+        <input type="email" id="newsEmail" placeholder="you@email.com" aria-label="Email for newsletter"/>
+        <button class="btn btn-primary btn-sm" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bar">© <span id="year"></span> Nazeer Electronics — Powering Your Digital Lifestyle. All rights reserved.</div>
+</footer>
+
+<!-- ============ OVERLAYS ============ -->
+<div class="backdrop" id="backdrop"></div>
+
+<aside class="drawer" id="cartDrawer" aria-label="Shopping cart">
+  <header class="drawer-head">
+    <h3><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.3 7.5h11.4l-1 11.6a2 2 0 0 1-2 1.9H9.3a2 2 0 0 1-2-1.9Z"/><path d="M9 10V6.8a3 3 0 0 1 6 0V10"/></svg>
+      Your Cart <span class="head-count" id="cartCountTxt"></span></h3>
+    <button class="icon-btn" data-close-drawer aria-label="Close cart">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+  </header>
+  <div class="drawer-body" id="cartItems"></div>
+  <footer class="drawer-foot">
+    <div class="sum-row"><span>Subtotal</span><span id="cartSub">₹0</span></div>
+    <div class="sum-row"><span>Delivery</span><span id="cartDel">Free</span></div>
+    <div class="sum-row total"><span>Total</span><span id="cartTotal">₹0</span></div>
+    <button class="btn btn-primary btn-block" id="checkoutBtn" type="button">
+      Checkout
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+    </button>
+  </footer>
+</aside>
+
+<aside class="drawer" id="wishDrawer" aria-label="Wishlist">
+  <header class="drawer-head">
+    <h3><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20.3C7.2 16.7 3.8 13.6 3.8 10a4.6 4.6 0 0 1 8.2-2.9A4.6 4.6 0 0 1 20.2 10c0 3.6-3.4 6.7-8.2 10.3Z"/></svg>
+      Wishlist</h3>
+    <button class="icon-btn" data-close-drawer aria-label="Close wishlist">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+  </header>
+  <div class="drawer-body" id="wishItems"></div>
+  <footer class="drawer-foot">
+    <button class="btn btn-ghost btn-block" id="addAllWish" type="button">Add all to Cart</button>
+  </footer>
+</aside>
+
+<div class="popover" id="profilePop">
+  <p class="pop-name" id="popName"></p>
+  <p class="pop-mail" id="popMail"></p>
+  <button class="btn btn-ghost btn-sm btn-block" id="signOutBtn" type="button">Sign Out</button>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<button class="stb" id="stb" aria-label="Scroll to top">
+  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>
+</button>
+
+<!-- ============ 3D PRODUCT INSPECTOR MODAL ============ -->
+<div class="modal3d" id="product3dModal" aria-hidden="true">
+  <div class="modal3d-backdrop" id="modal3dBackdrop"></div>
+  <div class="modal3d-container glass">
+    <button class="modal3d-close" id="modal3dClose" aria-label="Close 3D inspector">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+
+    <div class="modal3d-body">
+      <div class="modal3d-canvas-wrap">
+        <canvas id="modal3dCanvas"></canvas>
+        
+        <div class="modal3d-hint">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12H2m0 0 3-3m-3 3 3 3M17 12h5m0 0-3-3m3 3-3 3"/></svg>
+          Drag to orbit 3D model · Scroll to zoom
+        </div>
+
+        <div class="modal3d-toolbar glass">
+          <span class="m3d-tb-title">3D Lighting:</span>
+          <button class="m3d-chip active" data-m3d-preset="studio">Studio</button>
+          <button class="m3d-chip" data-m3d-preset="neon">Neon RGB</button>
+          <button class="m3d-chip" data-m3d-preset="dusk">Cyber Dusk</button>
+          <button class="m3d-chip" id="m3dExplodeBtn">Explode 3D</button>
+        </div>
+      </div>
+
+      <div class="modal3d-sidebar">
+        <span class="pill" id="m3dBadge">Interactive 3D Inspector</span>
+        <h2 id="m3dTitle">Product Name</h2>
+        <p class="m3d-desc" id="m3dDesc">Full 3D digital twin model. Rotate, inspect components, and customize casing color finish.</p>
+
+        <div class="m3d-section">
+          <label class="m3d-label">Finish & Casing Color</label>
+          <div class="color-swatches" id="m3dColors">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <div class="m3d-section">
+          <label class="m3d-label">Key Specifications</label>
+          <ul class="m3d-specs" id="m3dSpecs">
+            <!-- Rendered dynamically -->
+          </ul>
+        </div>
+
+        <div class="m3d-price-bar">
+          <div class="m3d-prices">
+            <span class="m3d-price" id="m3dPrice">₹0</span>
+            <span class="m3d-old" id="m3dOld">₹0</span>
+          </div>
+          <button class="btn btn-primary btn-glow" id="m3dAddToCart">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.3 7.5h11.4l-1 11.6a2 2 0 0 1-2 1.9H9.3a2 2 0 0 1-2-1.9Z"/><path d="M9 10V6.8a3 3 0 0 1 6 0V10"/></svg>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+
+<!-- ============ CELEBRATION RIBBON POP MODAL (CONGRATULATIONS & ORDER DESTINATION) ============ -->
+<div class="ribbon-modal-backdrop" id="ribbonModal" aria-hidden="true" role="dialog" aria-labelledby="celebrationTitle">
+  <!-- Dynamic Ribbon & Confetti Physics Canvas -->
+  <canvas id="ribbonCanvas"></canvas>
+
+  <div class="celebration-card">
+    <div class="celebration-ribbon-badge">
+      <span>🎉</span>
+    </div>
+
+    <h2 id="celebrationTitle">Congratulations!</h2>
+    <p class="celebration-sub">Your order has been placed successfully and confirmed.</p>
+
+    <div class="order-id-highlight">
+      <span>Order ID: <strong id="popOrderId">#NZR-2026-894210</strong></span>
+      <button class="btn-copy-order-id" id="btnCopyOrderId" onclick="copyCelebrationId()" title="Copy Order ID">Copy</button>
+    </div>
+
+    <!-- WHERE ORDER IS PLACED -->
+    <div class="order-destination-box">
+      <div class="dest-row">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div>
+          <span class="dest-label">Delivery Destination (Where Placed):</span>
+          <p class="dest-val" id="popOrderAddress">742 Evergreen Terrace, Jubilee Hills Road No. 36, Hyderabad, Telangana - 500033</p>
+        </div>
+      </div>
+
+      <div class="dest-row">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 16v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v1"/><path d="M18 8h4a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-4"/><circle cx="7" cy="18.5" r="2.5"/><circle cx="17" cy="18.5" r="2.5"/></svg>
+        <div>
+          <span class="dest-label">Logistics Fulfillment Hub:</span>
+          <p class="dest-val" id="popOrderHub">Dispatched &amp; Routed to Nazeer Express Logistics Hub • Air Express Delivery in 2 Business Days</p>
+        </div>
+      </div>
+
+      <div class="dest-row">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        <div>
+          <span class="dest-label">Total Amount Paid:</span>
+          <p class="dest-val" style="color:var(--charcoal); font-size:1.15rem;" id="popOrderTotal">₹1,44,900</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="celebration-actions">
+      <a href="orders.html" class="btn-track-order" id="popTrackOrderBtn">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+        Track Live in My Orders
+      </a>
+      <button class="btn-continue-shopping" onclick="closeCelebrationModal()">
+        Continue Shopping
+      </button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
